@@ -1,16 +1,17 @@
-import pandas as pd
-import pyodbc
-import json
-import logging
-from email.message import EmailMessage
+import os
 import sys
+import pyodbc
+from dotenv import load_dotenv
+import pandas as pd
+from email.message import EmailMessage
 from datetime import datetime
-import messages
 import requests
+import random
 import math
 import time
-from dotenv import load_dotenv
-import os
+import logging
+import settings as s
+import messages
 
 #hace el refresh del nuevo token
 def refreshtoken(client_id,client_secret,refresh_token):
@@ -55,6 +56,8 @@ def start_conn(idempresa):
     USERNAME = os.getenv('USERNAME')
     PASSWORD = os.getenv('PASSWORD')
 
+    s.update_config('GENERAL', 'idempresa', idempresa)
+
     connectionString = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={SERVER};DATABASE={DATABASE};UID={USERNAME};PWD={PASSWORD};Encrypt=no'
     conn0 = pyodbc.connect(connectionString)
     SQL_QUERY = f"""
@@ -66,20 +69,20 @@ def start_conn(idempresa):
         messages.send_email("No se encontraron registros al conectarse a empresas",  "En empresa = {idempresa}", 'conexion')
         sys.exit()
 
+    x = 'CREDS'
     for r in records:
-        creds = {
-            'mcadena' : [r.cadena][0],
-            'mclient_id' : [r.client_id][0],
-            'mclient_secret' : [r.client_secret][0],
-            'mvista' : [r.vista][0]
-        }
+        s.update_config(x, 'mcadena', [r.cadena][0])
+        s.update_config(x, 'mclient_id', [r.client_id][0])
+        s.update_config(x, 'mclient_secret', [r.client_secret][0])
+        s.update_config(x, 'mvista', [r.vista][0])
 
-    return creds, conn0
+    return conn0
 
 
 
 #info del user de ml, refresh
-def get_user(idempresa, creds, conn0):
+def get_user(conn0):
+    idempresa = s.get_config_value('idempresa')
     SQL_QUERY = f"""
     SELECT top 1 token,fecha,refresh_token,user_id from token_ml where Idempresa={idempresa} order by fecha desc
     """
@@ -90,39 +93,46 @@ def get_user(idempresa, creds, conn0):
         messages.send_email(f"No se encontraron registros al conectarse a token_ml", "En empresa = {idempresa}", 'conexion')
         sys.exit()
 
+    x = 'USER'
     for r in records: 
-        user = {
-            'access_token' : [r.token][0],
-            'modified' : [r.fecha][0],
-            'refresh_token' : [r.refresh_token][0],
-            'user_id' : [r.user_id][0]
-        }
+        access_token = [r.token][0]
+        s.update_config(x, 'access_token', access_token)
+        modified = [r.fecha][0]
+        s.update_config(x, 'modified', modified)
+        refresh_token = [r.refresh_token][0]
+        s.update_config(x, 'refresh_token', refresh_token)
+        user_id = [r.user_id][0]
+        s.update_config(x, 'user_id', user_id)
 
     #si pasaron mas de 6 horas, se debe refrescar el token
-    if (datetime.now() - user['modified']).total_seconds() >= 6 * 3600:
-        refreshed = refreshtoken(creds['mclient_id'],creds['mclient_secret'],user['refresh_token'])
+    if (datetime.now() - modified).total_seconds() >= 6 * 3600:
+        creds = s.read_section('CREDS')
+        refreshed = refreshtoken(creds['mclient_id'],creds['mclient_secret'],refresh_token)
         logging.info(f"Solicitud del token: {refreshed['status_code']}")
         logging.info("\n")
         if refreshed['status_code'] != 200:
             messages.send_email("Hubo un error al intentar refrescar el token",  "En empresa = {idempresa}", 'conexion')
             sys.exit()
-        
-        user.update({
-            'access_token' : refreshed['access_token'],
-            'refresh_token' : refreshed['refresh_token']
-        })
 
-        cadena=f"insert into token_ml (Idempresa,token,refresh_token,user_id) values ({idempresa},'{user['access_token']}','{user['access_token']}',{user['user_id']})"
+        access_token = refreshed['access_token']
+        s.update_config(x, 'access_token', access_token)
+        s.update_config(x, 'modified', refreshed['modified'])
+        refresh_token = refreshed['refresh_token']
+        s.update_config(x, 'refresh_token', refresh_token)
+
+        cadena=f"insert into token_ml (Idempresa,token,refresh_token,user_id) values ({idempresa},'{access_token}','{refresh_token}',{user_id})"
         #cursor = conn0.cursor()
         cursor.execute(cadena)
         cursor.commit()
-   
-    return user
+    
+    return
 
 
 
 #conseguir las gomas de la base de datos!!
-def get_db(creds):
+def get_db():
+    creds = s.read_section('CREDS')
+
     connectionString = f'DRIVER={{ODBC Driver 18 for SQL Server}}'+creds['mcadena']
     try:
         conn = pyodbc.connect(connectionString)
@@ -141,15 +151,30 @@ def get_db(creds):
 
     df_db = pd.DataFrame(columns=['cai', 'descripcion', 'precio', 'precio2','existencia', 'observ'])
     for r in records: 
-        df_db = pd.concat([df_db, pd.DataFrame({'cai': [r.cai.strip()], 'descripcion': [r.descripcion], 'precio': [r.precio], 'precio2': [r.precio2], 'existencia': [r.existencia], 'observ': [r.observ]})], ignore_index=True)
+        df_db = pd.concat([df_db, pd.DataFrame({'cai': [r.cai.strip()], 'descripcion': [r.descripcion], 'precio': [r.precio], 'existencia': [r.existencia], 'observ': [r.observ]})], ignore_index=True)
 
 
+    recargo_values=[]
+    for _ in range(5):
+        idx = random.randint(0, len(df_db) - 1)
+        p1 = df_db.iloc[idx]['precio']
+        p2 = records[idx].precio2
+        if p2 != 0:
+            recargo = p1 / p2
+            recargo_values.append(recargo)
+
+    prom_recargo = round(sum(recargo_values) / len(recargo_values), 3)
+
+    s.update_config('GENERAL', 'recargo', prom_recargo)
+    
     return df_db
 
 
 
 #lista de todos los items del usuario
-def get_items(user, filtro=""):
+def get_items(filtro=""):
+    user = s.read_section("USER")
+
     logger = logging.getLogger(__name__)
 
     access_token = user['access_token']
@@ -193,8 +218,8 @@ def get_items(user, filtro=""):
 
 
 
-#tiene en cuenta los limites de requests por ml, lo intenta por defecto 3 veces
-def make_request(method, url, headers, json="", i=3):
+#tiene en cuenta los limites de requests por ml, lo intenta por defecto 2 veces
+def make_request(method, url, headers, json="", i=2):
     if method == "put":
         response = requests.put(url, headers=headers, json=json)
     elif method == "post":
@@ -204,7 +229,7 @@ def make_request(method, url, headers, json="", i=3):
 
     if response.status_code == 429:
         if i >= 1:
-            time.sleep(70)
+            time.sleep(61)
             response = make_request(method, url, headers, json, i-1)
     if response.status_code == 500 or response.status_code == 409:
         if i >= 1:

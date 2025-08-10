@@ -1,19 +1,41 @@
 import pandas as pd
-import json
 import argparse
 import os
 import messages
 import connections
 import logging
-import logging
+import settings as s
 import sys
 import os
+from llamadas import cambiar_estado
 from typing import List, Dict, Optional
 from objetos import Neumatico, Items
 os.environ['PYTHONIOENCODING'] = 'utf-8'
 
-def leer_neums(items_list, access_token, db_dict, batch_size=20):
+def precio_real(precio, precio2, dir):
+    fpago = Items.get_fpago(dir)
+    match fpago:
+        case 0:
+            return precio * Items.get_cant(dir)
+        case 1:
+            return precio2 * Items.get_cant(dir)
+        #es un % mas que el precio real, no hace falta andar enviando variables
+
+def stock_real(stock, dir):
+    return stock // Items.get_cant(dir)
+
+#asigno una prioridad dependiendo de la ubicacion del item
+def prior(dir):
+    map_fpago = {0:3, 1:0}
+    map_cant = {1:2, 2:1, 4:0}
+    return map_fpago[Items.get_fpago(dir)] + map_cant[Items.get_cant(dir)]
+
+
+def leer_neums(items_list, idempresa, batch_size=20):
     i=0
+    access_token = s.get_config_value('access_token')
+    recargo = s.get_config_value('recargo')
+
     while i < len(items_list):
         batch = items_list[i:i+batch_size]
         i += batch_size
@@ -35,29 +57,36 @@ def leer_neums(items_list, access_token, db_dict, batch_size=20):
             
             Items(item_data)
             current = Items.ultimo_dir
+            sku = Items.get_sku(current)
 
-            #los Neumaticos solo se leen de cant 1, y fijarse que no se repita
-            if current['sku'] not in Neumatico.dict or current['cantidad'] == '1':
-               Neumatico(item_data, db_dict)
-        
-    return Neumatico.dict
+            #no puedo suponer que el neumatico modelo existe todas las veces
+            #voy a hacer un cosito d prioridad para resolver el tema
+            precio = item_data['price']
+            if sku not in Neumatico.dict:
+                n = Neumatico(item_data)
+                n.item_dir = current
+                n.precio = precio_real(precio, precio*recargo, current)
+                n.stock = stock_real(item_data['available_quantity'], current)
+            elif prior(current) > prior(Neumatico.dict[sku].item_dir):
+                n.item_dir = current
+                n.precio = precio_real(precio, precio*recargo, current)
+                n.stock = stock_real(item_data['available_quantity'], current)
 
 
 
 def main(idempresa=1):
     fmyapplog = f'{idempresa}_myapp.log'
+    fmyapplog = f'{idempresa}_myapp.log'
 
+    s.update_config('GENERAL', 'idempresa', idempresa)
     messages.create_log(fmyapplog)
     logger = logging.getLogger(__name__)
 
-    creds, conn = connections.start_conn(1)
-    user = connections.get_user(1, creds, conn)
-    df_db = connections.get_db(creds)
-    items_list = connections.get_items(user)
+    conn = connections.start_conn(idempresa)
+    connections.get_user(conn)
+    items_list = connections.get_items()
 
-    db_dict = df_db.set_index("cai")["precio2"].to_dict()
-    access_token = user['access_token']
-    leer_neums(items_list, access_token, db_dict)
+    leer_neums(items_list, idempresa)
 
 
 
