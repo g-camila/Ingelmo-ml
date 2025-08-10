@@ -60,13 +60,13 @@ def armar_ventas():
 
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Procesar el ID de la empresa.')
-    parser.add_argument('idempresa', type=str, help='El ID de la empresa')
-    try:
-        args = parser.parse_args()
-        main(args.idempresa)
-    except SystemExit as e:
-        if e.code != 0:
-            print(f"Error: {e}")
-        main(1)
+#if __name__ == "__main__":
+#    parser = argparse.ArgumentParser(description='Procesar el ID de la empresa.')
+#    parser.add_argument('idempresa', type=str, help='El ID de la empresa')
+#    try:
+#        args = parser.parse_args()
+#        main(args.idempresa)
+#    except SystemExit as e:
+#        if e.code != 0:
+#            print(f"Error: {e}")
+#        main(1)
