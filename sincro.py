@@ -27,12 +27,12 @@ def check_cat(data, cat, val):
 
 def desactivar(col, val):
     if val.status != 'active' or val.status == 'under_review':
-        return 200
+        return None
     else:
         data1 = {"available_quantity" : 0}
         data = check_cat(data1, col[1], val)
         response = llamadas.modificar(val.id, data)
-        return response.status_code
+        return response
     
 def desact_grupo(sku, filtro=[""], desc=None):
     for index, col, val in Items.iterar_sku(sku, filtro):
@@ -79,15 +79,15 @@ def corregir_repetidos():
                 response = desactivar(dir[1], val)
                 messages.handle_error(response, dir, val, 'desact')
 
-def sincro(loc, val, cambios):
+
+def sincro(loc, val, cambios, recargo):
     if val.status == 'under_review':
         return
     
-    recargo = s.get_config_value('recargo')
     data = {}
     if 'precio' in cambios:
         precio = cambios['precio']
-        new_precio = lectura.precio_real(precio, precio*recargo, loc)
+        new_precio = lectura.precio_real(precio, int(precio*recargo), loc)
         data['price'] = new_precio
     if 'stock' in cambios:
         stock = cambios['stock']
@@ -97,9 +97,9 @@ def sincro(loc, val, cambios):
     catalogo = Items.get_catalogo(loc)
     data2 = check_cat(data, catalogo, val)
     response = llamadas.modificar(val.id, data2)
-    logging.info(f"Se actualizo el item {val.id}")
     messages.handle_error(response, loc, val, 'sincro')
     return
+
 
 def main(idempresa=1):
     start_time = time.time()
@@ -116,33 +116,30 @@ def main(idempresa=1):
     df_db = connections.get_db()
     items_list = connections.get_items()
 
-    dict_ventas = armar_ventas()
-
-    lectura.leer_neums(items_list, idempresa)
+    lectura.leer_neums(items_list)
     corregir_repetidos()
 
+    dict_ventas = armar_ventas()
+    
+    if os.path.exists(errores_file):
+        with open(errores_file, 'r') as file:
+            errores = json.load(file)
+            for error in errores:
+                row = tuple(error['dir'][0])
+                col = tuple(error['dir'][1])
+                dir = [row, col]
+                sku = Items.get_sku(dir)
+                errores_rows = df_db[df_db['cai'] == sku]
+                normales_rows = df_db[df_db['cai'] != sku]
 
-    if not os.path.exists(errores_file):
-        with open(errores_file, 'w') as file:
-            json.dump({}, file)
-
-    with open(errores_file, 'r') as file:
-        errores = json.load(file)
-        for error in errores:
-            strdir = error['dir']
-            dir = eval(strdir)
-            sku = Items.get_sku(dir)
-            errores_rows = df_db[df_db['cai'] == sku]
-            normales_rows = df_db[df_db['cai'] != sku]
-
-    if errores:
-        #los errores previos toman prioridad!!
+        os.remove(errores_file)
         df_db = pd.concat([errores_rows, normales_rows], ignore_index=True)
 
 
     #ahora me tengo que fijar si hay diferencias entre la db y la info de cada uno de mis neum
     not_read = list(Neumatico.dict.keys())
     cambios = {}
+    recargo = float(s.get_config_value('recargo'))
 
     for index, row in df_db.iterrows():
         #fijarse si hay una diferencia entre el precio o stock entre la base d datos y mercado libre
@@ -150,27 +147,28 @@ def main(idempresa=1):
         try:
             rneum = Neumatico.dict[rsku]
         except KeyError:
-            return False #no existe en ml
+            continue  #no existe en ml
 
         mlprecio = rneum.precio
         mlstock = rneum.stock
-        dbprecio = int(row['precio']) - dict_ventas.get(sku)
-        dbstock = int(row['existencia'])
+        dbprecio = int(row['precio'])
+        dbstock = max(0, int(row['existencia']) - dict_ventas.get(rsku, 0))
 
         difprecio = mlprecio != dbprecio
         difstock = mlstock != dbstock
 
         #funcion que se fija si el item entra en los requisitos para desactivarlo por default
-        descartados = descarte(row, dbstock, cambios)
+        descartados = descarte(row, dbstock)
 
         if not difprecio and not difstock:
             continue
         
-        #guardar en un df los cambios
+        cambios[rsku] = {}
+        #guardar en un dict los cambios
         if difstock:
-            cambios[sku]['precio'] = dbprecio
+            cambios[rsku]['stock'] = dbstock
         if difprecio:
-            cambios[sku]['stock'] = dbstock
+            cambios[rsku]['precio'] = dbprecio
 
         for index, col, val in Items.iterar_sku(rsku):
             #el 99% que sea de catalogo va a significar que esta vinculado
@@ -178,24 +176,27 @@ def main(idempresa=1):
             if val.id in descartados or val.sincronizada:
                 continue
             loc = [(rsku, index), col]
-            sincro(loc, val, cambios[sku])
-            not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
+            sincro(loc, val, cambios[rsku], recargo)
+
+        not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
     
     for sku in not_read:
         desact_grupo(sku)
 
 
-    with open(errores_file, 'r') as file:
-        errores = json.load(file)
+    if os.path.exists(errores_file):
+        with open(errores_file, 'r') as file:
+            errores = json.load(file)
+        os.remove(errores_file)
         for error in errores:
-            strdir = error['dir']
-            dir = eval(strdir)
-            val = error['val']
+            row = tuple(error['dir'][0])
+            col = tuple(error['dir'][1])
+            val = Items.loc[row, col]
             tipo = error['tipo']
             if tipo == 'sincro':
                 sincro(dir, val, cambios[sku])
             elif tipo == 'desact':
-                sincro(dir, val, cambios[sku])
+                desactivar(col, val)
 
     logging.info("Sincronización hecha")
 

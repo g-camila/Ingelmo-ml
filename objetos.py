@@ -1,6 +1,11 @@
 import pandas as pd
 from typing import List, Dict
 
+#mepa que no se deberia hacer desde 0 todo esto
+#se deberia guardar la ultima version del df y el dict y actualizar nomas
+#osea solo sacar o agregar cosas
+
+
 #la clase de Neumaticos es de cada goma individual
 #es unico cada objeto
 #se guarda cada uno en una lista
@@ -136,7 +141,7 @@ class Items:
         #puede que se repitan los items
         if (self.sku, cant) in Items.df.index:
             if not pd.isna(Items.df.loc[direccion[0], direccion[1]]):
-                npago = Items.df.columns.get_loc(fpago)
+                #npago = Items.df.columns.get_loc(fpago)
                 Items.repetidos.setdefault(self.sku, {}).setdefault(str(direccion), []).append(self)
                 return
 

@@ -44,9 +44,10 @@ def armar_ventas():
         #consultar la cantidad de gomas dentro de ese item
         for index, col, val in Items.iterar_sku(sku):
             if val.id == item_id:
-                unidades = index[1]
+                unidades = int(index)
+                continue
 
-        venta_total = cant * int(unidades)
+        venta_total = cant * unidades
 
         # Acumular venta_total por SKU
         if sku not in dict_ventas:

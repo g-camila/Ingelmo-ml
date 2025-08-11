@@ -53,12 +53,13 @@ def start_conn(idempresa):
     load_dotenv()
     SERVER = os.getenv('SERVER')
     DATABASE = os.getenv('DATABASE')
-    USERNAME = os.getenv('USERNAME')
+    USER = os.getenv('USER')
     PASSWORD = os.getenv('PASSWORD')
+
 
     s.update_config('GENERAL', 'idempresa', idempresa)
 
-    connectionString = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={SERVER};DATABASE={DATABASE};UID={USERNAME};PWD={PASSWORD};Encrypt=no'
+    connectionString = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={SERVER};DATABASE={DATABASE};UID={USER};PWD={PASSWORD};Encrypt=no'
     conn0 = pyodbc.connect(connectionString)
     SQL_QUERY = f"""
     SELECT top 1 cadena,client_id,client_secret,vista from empresas where Id={idempresa}"""
@@ -233,7 +234,7 @@ def make_request(method, url, headers, json="", i=2):
             response = make_request(method, url, headers, json, i-1)
     if response.status_code == 500 or response.status_code == 409:
         if i >= 1:
-            time.sleep(20)
+            time.sleep(30)
             response = make_request(method, url, headers, json, i-1)
 
     return response

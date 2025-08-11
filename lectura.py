@@ -31,11 +31,15 @@ def prior(dir):
     return map_fpago[Items.get_fpago(dir)] + map_cant[Items.get_cant(dir)]
 
 
-def leer_neums(items_list, idempresa, batch_size=20):
+def leer_neums(items_list, batch_size=20):
     i=0
     access_token = s.get_config_value('access_token')
-    recargo = s.get_config_value('recargo')
+    recargo = float(s.get_config_value('recargo'))
 
+    #lo que se deberia estar haciendo aca es guardar la info de la ultima vez que lei los items
+    #y solo buscar los atributos de todo de lo que no se leyo todavia para agregarlo
+    #y borrar lo que no encuentre
+    
     while i < len(items_list):
         batch = items_list[i:i+batch_size]
         i += batch_size
@@ -65,7 +69,7 @@ def leer_neums(items_list, idempresa, batch_size=20):
             if sku not in Neumatico.dict:
                 n = Neumatico(item_data)
                 n.item_dir = current
-                n.precio = precio_real(precio, precio*recargo, current)
+                n.precio = precio_real(precio, int(precio*recargo), current)
                 n.stock = stock_real(item_data['available_quantity'], current)
             elif prior(current) > prior(Neumatico.dict[sku].item_dir):
                 n.item_dir = current

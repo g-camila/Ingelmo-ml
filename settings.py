@@ -20,32 +20,6 @@ def update_config(section, key, value):
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
 
-#no se si me sirve tanto tener algo asi
-def read_config():
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-
-    access_token = config.get('General', 'access_token')
-    user_id = config.get('Database', 'user_id')
-    idempresa = config.get('Database', 'idempresa')
-    recargo = config.get('Database', 'recargo')
-    macdena = config.get('Database', 'mcadena')
-    mclient_id = config.get('Database', 'mclient_id')
-    mclient_secret = config.get('Database', 'mclient_secret')
-    mvista = config.get('Database', 'mclient_secret')
-
-    config_values = {
-        'access_token': access_token,
-        'user_id': user_id,
-        'idempresa': idempresa,
-        'recargo': recargo,
-        'mcadena' : macdena,
-        'mclient_id' : mclient_id,
-        'mclient_secret' : mclient_secret,
-        'mvista' : mvista
-
-    }
-    return config_values
 
 def read_section(section):
     config = configparser.ConfigParser()
@@ -65,7 +39,7 @@ def get_config_value(key):
         if key in config[section]:
             return config[section][key]
     
-    print(f"Key '{key}' not found in any section.")
+    print(f"key '{key}' no se encontro")
     return None
 
 

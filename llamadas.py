@@ -13,6 +13,7 @@ def get_item_attrs(item_id):
         "Accept": "application/json"
     }
     response = connections.make_request('get', url, headers)
+    return response
 
 
 def modificar(id, data):
