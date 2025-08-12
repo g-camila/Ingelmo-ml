@@ -1,9 +1,13 @@
 import os
+from dotenv import load_dotenv
 import logging
 import smtplib
 from email.message import EmailMessage
 import json
 import settings as s
+from objetos import Items
+from time import sleep
+
 
 #def add_json(filename, data):
 #    if not os.path.exists(filename):
@@ -15,6 +19,30 @@ import settings as s
 #            file_data["emp_details"].append(data)
 #            file.seek(0)
 #            json.dump(file_data, file, indent=4)
+
+def send_email(programa, asunto, mensaje="", filename=""):
+    load_dotenv()
+    if programa == 0:
+        EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS0')
+        EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD0')
+        destinatario = EMAIL_ADDRESS
+    elif programa == 1:
+        EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS1')
+        EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD1')
+    
+    msg = EmailMessage()
+    msg['Subject'] = asunto
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = destinatario
+
+    msg.set_content(mensaje)
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        smtp.send_message(msg)
+    return
+
+
 
 def add_json(filename, data):
     if not os.path.exists(filename):
@@ -49,24 +77,23 @@ def create_log(fmyapplog):
         filemode="w"
     )
     logger = logging.getLogger(__name__)
-    logging.info(f"INICIO DE PROCESO DE SINCRONIZACION ")
-    logging.info("\n")
     return
 
 
 def handle_error(response, loc, val, tipo):
-    if response == None:
+    if response == None: #por alguna razon no actualice pero esta todo bien
         return
     if response.status_code != 200:
-        logging.info(f"No se pudo actualizar el item: {val.id}. Resupuesta: {response}")
+        logging.info(f"No se pudo actualizar el item: {val.id} de sku {Items.get_sku(loc)}. Resupuesta:")
+        logging.info(response.json())
+        logging.info("\n")
         idempresa = s.get_config_value('idempresa')
         errores_file = f'{idempresa}_errores.json'
         add_json(errores_file, {'dir':loc, 'tipo':tipo})
     else:
-        logging.info(f"Se actualizo el item {val.id}")
+        logging.info(f"Se actualizo el item {val.id}") #lo tendria q sacar cuando termine el coso
 
     return
-
 
 
 def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = 'X', printEnd = "\r"):
@@ -74,7 +101,8 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '-' * (length - filledLength)
     print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
-    # Print New Line on Complete
+
     if iteration == total: 
         print()
     return
+

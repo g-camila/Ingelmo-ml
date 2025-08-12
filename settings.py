@@ -43,7 +43,6 @@ def get_config_value(key):
     return None
 
 
-    
 
 if __name__ == "__main__":
     create_config()

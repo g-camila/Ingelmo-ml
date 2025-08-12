@@ -12,6 +12,7 @@ from objetos import Neumatico, Items
 import lectura
 import settings as s
 from ventas import armar_ventas
+from spin import Spinner
 
 os.environ['PYTHONIOENCODING'] = 'utf-8'
 
@@ -103,13 +104,20 @@ def sincro(loc, val, cambios, recargo):
 
 def main(idempresa=1):
     start_time = time.time()
+
+    spinner = Spinner()
+    spinner.start()
+
     fmyapplog = f'{idempresa}_myapp.log'
     errores_file = f'{idempresa}_errores.json'
-
+    
     s.update_config('GENERAL', 'idempresa', idempresa)
 
     messages.create_log(fmyapplog)
     logger = logging.getLogger(__name__)
+
+    logging.info(f"INICIO DEL PROCESO DE SINCRONIZACION ")
+    logging.info("\n")
 
     conn = connections.start_conn(idempresa)
     connections.get_user(conn)
@@ -121,6 +129,7 @@ def main(idempresa=1):
 
     dict_ventas = armar_ventas()
     
+    #los errores anteriores toman prioridad para actualizar
     if os.path.exists(errores_file):
         with open(errores_file, 'r') as file:
             errores = json.load(file)
@@ -141,12 +150,17 @@ def main(idempresa=1):
     cambios = {}
     recargo = float(s.get_config_value('recargo'))
 
-    for index, row in df_db.iterrows():
+    spinner.stop()
+    length = len(df_db)
+    messages.printProgressBar(0, length, prefix = 'Progreso:', suffix = 'Complete', length = 50)
+
+    for i, (index, row) in enumerate(df_db.iterrows(), start=0):
         #fijarse si hay una diferencia entre el precio o stock entre la base d datos y mercado libre
         rsku = row['cai']
         try:
             rneum = Neumatico.dict[rsku]
         except KeyError:
+            messages.printProgressBar(i + 1, length, prefix = 'Progress:', suffix = 'Complete', length = 50)
             continue  #no existe en ml
 
         mlprecio = rneum.precio
@@ -170,20 +184,21 @@ def main(idempresa=1):
         if difprecio:
             cambios[rsku]['precio'] = dbprecio
 
-        for index, col, val in Items.iterar_sku(rsku):
+        for index_item, col, val in Items.iterar_sku(rsku):
             #el 99% que sea de catalogo va a significar que esta vinculado
             #lo voy a diferenciar por el 1% que seguro me va a cagar
             if val.id in descartados or val.sincronizada:
                 continue
-            loc = [(rsku, index), col]
+            loc = [(rsku, index_item), col]
             sincro(loc, val, cambios[rsku], recargo)
 
+        messages.printProgressBar(i + 1, length, prefix = 'Progress:', suffix = 'Complete', length = 50)
         not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
     
     for sku in not_read:
         desact_grupo(sku)
 
-
+    #lo intento otra vez
     if os.path.exists(errores_file):
         with open(errores_file, 'r') as file:
             errores = json.load(file)
@@ -202,6 +217,20 @@ def main(idempresa=1):
 
     end_time = time.time()
     print(f"Execution time: {end_time - start_time} seconds")
+
+    with open(fmyapplog, 'r', encoding='utf-8') as file:
+        log_content = file.read()
+    
+    #cadena="insert into historial (idempresa,myapplog,status) values (?, ?, ?)"
+    #values=(idempresa,log_content,'ok')
+    #cursor = conn.cursor()
+    #cursor.execute(cadena,values)
+    #cursor.commit()
+
+    #si siguen habiendo errores es preocupante
+    if os.path.exists(errores_file):
+        mensaje="Hubo un error al intentar modificar algunos items:"
+        messages.send_email(0, mensaje, log_content)
 
 
 

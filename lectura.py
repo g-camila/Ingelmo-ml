@@ -54,11 +54,15 @@ def leer_neums(items_list, batch_size=20):
             batch_data = response.json()
         else: #es mas rapido pero si falla un batch tengo que cortar todo
             logging.info(f"Fallo el batch de los items: {response.status_code}")
+            messages.send_email(0, "Error al traer un batch de items",  response.json())
             sys.exit()
 
         for item_data in batch_data:
+            if item_data['code'] != 200:
+                messages.send_email(0, "No se pudo leer un item",  item_data.json())
+                sys.exit()
+
             item_data = item_data['body']
-            
             Items(item_data)
             current = Items.ultimo_dir
             sku = Items.get_sku(current)

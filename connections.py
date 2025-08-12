@@ -41,7 +41,7 @@ def fetch_records(cursor, query, mensaje, file):
     except pyodbc.Error as e:
         if file == 'conexion':
             logging.info(f"Error executing query: {e}")
-        messages.send_email(mensaje, f'cadena: {query}', file)
+        messages.send_email(0, mensaje, f'cadena: {query}')
         sys.exit("Failed to execute query. Exiting...")
     return cursor.fetchall()
 
@@ -67,7 +67,7 @@ def start_conn(idempresa):
     records = fetch_records(cursor, SQL_QUERY, "Hubo un error al intentar leer la cadena de conexion de empresas", 'conexion')
 
     if not records:
-        messages.send_email("No se encontraron registros al conectarse a empresas",  "En empresa = {idempresa}", 'conexion')
+        messages.send_email(0, "No se encontraron registros al conectarse a empresas",  "En empresa = {idempresa}")
         sys.exit()
 
     x = 'CREDS'
@@ -91,7 +91,7 @@ def get_user(conn0):
     records = fetch_records(cursor, SQL_QUERY, "Hubo un error al intentar leer la cadena de conexion de token_ml", 'conexion')
 
     if not records:
-        messages.send_email(f"No se encontraron registros al conectarse a token_ml", "En empresa = {idempresa}", 'conexion')
+        messages.send_email(0, f"No se encontraron registros al conectarse a token_ml", "En empresa = {idempresa}")
         sys.exit()
 
     x = 'USER'
@@ -112,7 +112,7 @@ def get_user(conn0):
         logging.info(f"Solicitud del token: {refreshed['status_code']}")
         logging.info("\n")
         if refreshed['status_code'] != 200:
-            messages.send_email("Hubo un error al intentar refrescar el token",  "En empresa = {idempresa}", 'conexion')
+            messages.send_email(0, "Hubo un error al intentar refrescar el token", refreshed.json())
             sys.exit()
 
         access_token = refreshed['access_token']
@@ -140,7 +140,7 @@ def get_db():
     except pyodbc.Error as e:
         logging.error(f"Error connecting to database: {e}")
         sys.exit("Failed to connect to the database. Exiting...")
-        messages.send_email("Hubo un error al intentar conectarse a la base de datos", "", 'conexion')
+        messages.send_email(0, "Hubo un error al intentar conectarse a la base de datos")
 
 
     SQL_QUERY = f"""
@@ -187,11 +187,11 @@ def get_items(filtro=""):
         "Accept": "application/json"
     }
     response = make_request('get', url, headers)
-    logging.info(f"Se intentaron leer los items del usuario: {response}")
-    logging.info("\n")
     if (response.status_code != 200):
+        logging.info(f"Hubo un error al leer los items del usuario: {response}")
+        logging.info("\n")
         mensaje = "Hubo un error al intentar leer los items del usuario"
-        messages.send_email(mensaje, response.json(), 'conexion')
+        messages.send_email(0, mensaje, response.json())
         return
 
     litems = response.json()
@@ -205,10 +205,10 @@ def get_items(filtro=""):
             url = f"https://api.mercadolibre.com/users/{user_id}/items/search?search_type=scan&limit=100&scroll_id={scroll_id}{filtro}"
             response = make_request('get', url, headers)
             if (response.status_code != 200):
-                logging.info(f"Se intentaron leer los items del usuario: {response.status_code}")
+                logging.info(f"Hubo un error al leer los items del usuario: {response}")
                 logging.info("\n")
                 mensaje="Hubo un error al intentar leer los items del usuario"
-                messages.send_email(mensaje, response.json(), 'conexion')
+                messages.send_email(0, mensaje, response.json())
                 return
 
             litems = response.json()
