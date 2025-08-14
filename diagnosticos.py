@@ -11,9 +11,11 @@ os.environ['PYTHONIOENCODING'] = 'utf-8'
 #por ahora solo registro todos los items y todos la info de los modelos de gomas que tenemos
 
 def main(idempresa=1):
-    lectura.main(idempresa=1)
+    os.makedirs("diagnosticos", exist_ok=True)
 
-    neums_dict = {}
+    lectura.main(idempresa)
+
+    #neums_dict = {}
     modelos_list = []
     for n in Neumatico.dict.values():
         modelo = {'Sku': n.sku, 
@@ -32,31 +34,31 @@ def main(idempresa=1):
                     "Cae" : n.cae}
         modelos_list.append(modelo)
         
-        new_neum = {
-            'Link': n.link,
-            'Titulo': n.titulo,
-            'Precio': n.precio,
-            'Stock': n.stock,
-            'Publicaciones': []
-        }
-        item_publs = Items.df.loc[n.sku]
-        if isinstance(item_publs, pd.DataFrame):
-            for index, row in item_publs.iterrows():
-                for col, r in row.items():
-                    if pd.notnull(r): #quiero evitar los null!!
-                        n_publ = {'id': r.id,
-                                    'status': r.status,
-                                    'cantidad': index,
-                                    'forma de pago': 'Sin cuotas' if col[0]=='gold_special' else '6 cuotas',
-                                    'catalogo': col[1]}     
-                        new_neum['Publicaciones'].append(n_publ)
-        neums_dict[n.sku] = new_neum
+        #new_neum = {
+        #    'Link': n.link,
+        #    'Titulo': n.titulo,
+        #    'Precio': n.precio,
+        #    'Stock': n.stock,
+        #    'Publicaciones': []
+        #}
+        #item_publs = Items.df.loc[n.sku]
+        #if isinstance(item_publs, pd.DataFrame):
+        #    for index, row in item_publs.iterrows():
+        #        for col, r in row.items():
+        #            if pd.notnull(r): #quiero evitar los null!!
+        #                n_publ = {'id': r.id,
+        #                            'status': r.status,
+        #                            'cantidad': index,
+        #                            'forma de pago': 'Sin cuotas' if col[0]=='gold_special' else '6 cuotas',
+        #                            'catalogo': col[1]}     
+        #                new_neum['Publicaciones'].append(n_publ)
+        #neums_dict[n.sku] = new_neum
 
-    with open("modelos_ml.json", "w", encoding="utf-8") as f:
+    with open("diagnosticos/modelos_ml.json", "w", encoding="utf-8") as f:
         json.dump(modelos_list, f, indent=4, ensure_ascii=False)
 
-    with open("neums.json", "w", encoding="utf-8") as f:
-        json.dump(neums_dict, f, indent=4, ensure_ascii=False)
+    #with open("neums.json", "w", encoding="utf-8") as f:
+    #    json.dump(neums_dict, f, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Procesar el ID de la empresa.')

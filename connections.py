@@ -3,7 +3,6 @@ import sys
 import pyodbc
 from dotenv import load_dotenv
 import pandas as pd
-from email.message import EmailMessage
 from datetime import datetime
 import requests
 import random
@@ -220,7 +219,7 @@ def get_items(filtro=""):
 
 
 #tiene en cuenta los limites de requests por ml, lo intenta por defecto 2 veces
-def make_request(method, url, headers, json="", i=2):
+def make_request(method, url, headers, json="", i=6, base_wait=2):
     if method == "put":
         response = requests.put(url, headers=headers, json=json)
     elif method == "post":
@@ -229,12 +228,11 @@ def make_request(method, url, headers, json="", i=2):
         response = requests.get(url, headers=headers)
 
     if response.status_code == 429:
-        if i >= 1:
-            time.sleep(61)
-            response = make_request(method, url, headers, json, i-1)
+        espera = base_wait * (2 ** (6-i))
+        time.sleep(espera)            
+        response = make_request(method, url, headers, json, i-1)
     if response.status_code == 500 or response.status_code == 409:
-        if i >= 1:
-            time.sleep(30)
-            response = make_request(method, url, headers, json, i-1)
+        time.sleep(30)
+        response = make_request(method, url, headers, json, i-1)
 
     return response

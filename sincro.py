@@ -56,25 +56,22 @@ def descarte(row, stockdb):
             desact_grupo(sku, ["1", "2"], desc)
     return desc
 
-#limpiar los repetidos
-def corregir_repetidos():
-    if not Items.repetidos:
-        return
-    
+
+#limpiar los repetidos y los items sin trackear en neum
+def corregir():
+    skus = Items.df.index.get_level_values(0)
+    for sku in skus:
+        if sku not in Neumatico.dict:
+            for index_item, col, val in Items.iterar_sku(sku):
+                dir = [(sku, index_item), col]
+                response = desactivar(col, val)
+                messages.handle_error(response, dir, val, 'desact')
+                mensaje = f"Las instancias del sku {sku} no tienen un neumatico modelo: 1 cantidad, forma de pago sin cuotas. Se desactivan todos."
+                messages.send_email(0, "Falta un neumatico modelo", mensaje)
+
     for sku in Items.repetidos:
         for strdir in Items.repetidos[sku]:
             dir = eval(strdir)
-
-        #fijarse si hay algo del valor contrario de fpago
-        #rfpago = dir[1][0]
-        #cat = Items.get_catalogo(dir)
-        #for pagos in Items.fpago:
-        #    if pagos != rfpago:
-        #        if pd.isna(Items.df.loc[dir[0], (pagos, cat)]):
-        #            #nomas intentar cambiar fpago
-        #            #si no mal recuerdo es un re quilombo <3 se pospone
-        #            del Items.fpago[sku][valor]
-
             for val in Items.repetidos[sku][strdir]:
                 #desactivar y mandar mail avisando que hay que borrar!!
                 response = desactivar(dir[1], val)
@@ -124,8 +121,10 @@ def main(idempresa=1):
     df_db = connections.get_db()
     items_list = connections.get_items()
 
+    spinner.stop()
+
     lectura.leer_neums(items_list)
-    corregir_repetidos()
+    corregir()
 
     dict_ventas = armar_ventas()
     
@@ -146,13 +145,16 @@ def main(idempresa=1):
 
 
     #ahora me tengo que fijar si hay diferencias entre la db y la info de cada uno de mis neum
-    not_read = list(Neumatico.dict.keys())
+    ml_skus = list(Neumatico.dict.keys())
+    db_skus = df_db['cai'].unique()
+    ml_not_db = [sku for sku in ml_skus if sku not in db_skus]
+
     cambios = {}
     recargo = float(s.get_config_value('recargo'))
 
-    spinner.stop()
     length = len(df_db)
-    messages.printProgressBar(0, length, prefix = 'Progreso:', suffix = 'Complete', length = 50)
+    print("\n")
+    messages.printProgressBar(0, length, prefix = 'Progreso sincro:', suffix = 'Complete', length = 50)
 
     for i, (index, row) in enumerate(df_db.iterrows(), start=0):
         #fijarse si hay una diferencia entre el precio o stock entre la base d datos y mercado libre
@@ -160,7 +162,7 @@ def main(idempresa=1):
         try:
             rneum = Neumatico.dict[rsku]
         except KeyError:
-            messages.printProgressBar(i + 1, length, prefix = 'Progress:', suffix = 'Complete', length = 50)
+            messages.printProgressBar(i + 1, length, prefix = 'Progreso sincro:', suffix = 'Complete', length = 50)
             continue  #no existe en ml
 
         mlprecio = rneum.precio
@@ -175,6 +177,7 @@ def main(idempresa=1):
         descartados = descarte(row, dbstock)
 
         if not difprecio and not difstock:
+            messages.printProgressBar(i + 1, length, prefix = 'Progreso sincro:', suffix = 'Complete', length = 50)
             continue
         
         cambios[rsku] = {}
@@ -192,11 +195,15 @@ def main(idempresa=1):
             loc = [(rsku, index_item), col]
             sincro(loc, val, cambios[rsku], recargo)
 
-        messages.printProgressBar(i + 1, length, prefix = 'Progress:', suffix = 'Complete', length = 50)
-        not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
+        messages.printProgressBar(i + 1, length, prefix = 'Progreso sincro:', suffix = 'Complete', length = 50)
+        #not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
     
-    for sku in not_read:
+    spinner = Spinner()
+    spinner.start()
+
+    for sku in ml_not_db:
         desact_grupo(sku)
+
 
     #lo intento otra vez
     if os.path.exists(errores_file):
@@ -213,12 +220,14 @@ def main(idempresa=1):
             elif tipo == 'desact':
                 desactivar(col, val)
 
+    spinner.stop()
+
     logging.info("Sincronización hecha")
 
     end_time = time.time()
     print(f"Execution time: {end_time - start_time} seconds")
 
-    with open(fmyapplog, 'r', encoding='utf-8') as file:
+    with open(fmyapplog, 'r', encoding='latin-1') as file:
         log_content = file.read()
     
     #cadena="insert into historial (idempresa,myapplog,status) values (?, ?, ?)"

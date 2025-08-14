@@ -7,8 +7,7 @@ import logging
 import settings as s
 import sys
 import os
-from llamadas import cambiar_estado
-from typing import List, Dict, Optional
+from spin import Spinner
 from objetos import Neumatico, Items
 os.environ['PYTHONIOENCODING'] = 'utf-8'
 
@@ -24,22 +23,17 @@ def precio_real(precio, precio2, dir):
 def stock_real(stock, dir):
     return stock // Items.get_cant(dir)
 
-#asigno una prioridad dependiendo de la ubicacion del item
-def prior(dir):
-    map_fpago = {0:3, 1:0}
-    map_cant = {1:2, 2:1, 4:0}
-    return map_fpago[Items.get_fpago(dir)] + map_cant[Items.get_cant(dir)]
-
 
 def leer_neums(items_list, batch_size=20):
     i=0
     access_token = s.get_config_value('access_token')
-    recargo = float(s.get_config_value('recargo'))
 
     #lo que se deberia estar haciendo aca es guardar la info de la ultima vez que lei los items
     #y solo buscar los atributos de todo de lo que no se leyo todavia para agregarlo
     #y borrar lo que no encuentre
-    
+    length = len(items_list)
+    messages.printProgressBar(0, length, prefix = 'Leyendo items:', suffix = 'Complete', length = 50)
+
     while i < len(items_list):
         batch = items_list[i:i+batch_size]
         i += batch_size
@@ -66,36 +60,37 @@ def leer_neums(items_list, batch_size=20):
             Items(item_data)
             current = Items.ultimo_dir
             sku = Items.get_sku(current)
+            cant = Items.get_cant(current)
+            fpago = Items.get_fpago(current)
 
             #no puedo suponer que el neumatico modelo existe todas las veces
             #voy a hacer un cosito d prioridad para resolver el tema
-            precio = item_data['price']
-            if sku not in Neumatico.dict:
+            if sku not in Neumatico.dict and cant == 1 and fpago == 0:
                 n = Neumatico(item_data)
                 n.item_dir = current
-                n.precio = precio_real(precio, int(precio*recargo), current)
-                n.stock = stock_real(item_data['available_quantity'], current)
-            elif prior(current) > prior(Neumatico.dict[sku].item_dir):
-                n.item_dir = current
-                n.precio = precio_real(precio, precio*recargo, current)
-                n.stock = stock_real(item_data['available_quantity'], current)
-
-
+        messages.printProgressBar(i, length, prefix = 'Leyendo items:', suffix = 'Complete', length = 50)
 
 def main(idempresa=1):
-    fmyapplog = f'{idempresa}_myapp.log'
-    fmyapplog = f'{idempresa}_myapp.log'
+    spinner = Spinner()
+    spinner.start()
 
+    fmyapplog = f'{idempresa}_myapp.log'
+    
     s.update_config('GENERAL', 'idempresa', idempresa)
+
     messages.create_log(fmyapplog)
     logger = logging.getLogger(__name__)
+
+    logging.info(f"INICIO DEL PROCESO DE SINCRONIZACION ")
+    logging.info("\n")
 
     conn = connections.start_conn(idempresa)
     connections.get_user(conn)
     items_list = connections.get_items()
+    
+    spinner.stop()
 
-    leer_neums(items_list, idempresa)
-
+    leer_neums(items_list)
 
 
     

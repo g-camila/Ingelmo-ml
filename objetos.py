@@ -1,5 +1,4 @@
 import pandas as pd
-from typing import List, Dict
 
 #mepa que no se deberia hacer desde 0 todo esto
 #se deberia guardar la ultima version del df y el dict y actualizar nomas
@@ -13,45 +12,47 @@ class Neumatico:
     dict = {}
 
     def __init__(self, item_data):
-        #self.ratio = None
-        #self.marca = None
-        #self.linea = None
-        #self.carga = None
-        #self.modelo = None
-        #self.diametro = None
-        #self.ancho = None
-        #self.servicio = None
-        #self.terreno = None
-        #self.construccion = None
+        self.ratio = None
+        self.marca = None
+        self.linea = None
+        self.carga = None
+        self.modelo = None
+        self.diametro = None
+        self.ancho = None
+        self.servicio = None
+        self.terreno = None
+        self.construccion = None
+        self.sku = None
+        self.cae = None
 
         self.id = item_data['id']
         dir_attributes = item_data['attributes']
-        #for ind in range(len(dir_attributes)):
-            #atributo = dir_attributes[ind]["id"]
-            #value = dir_attributes[ind]['value_name']
-            #match atributo:
-                #case "AUTOMOTIVE_TIRE_ASPECT_RATIO":
-                    #self.ratio = value
-                #case "BRAND":
-                    #self.marca = value
-                #case "LINE":
-                    #self.linea = value
-                #case "LOAD_INDEX":
-                    #self.carga = value
-                #case "MODEL":
-                    #self.modelo = value
-                #case "RIM_DIAMETER":
-                    #self.diametro = value
-                #case "SECTION_WIDTH":
-                    #self.ancho = value
-                #case "SERVICE_TYPE":
-                    #self.servicio = value
-                #case "TERRAIN_TYPE":
-                    #self.terreno = value
-                #case "TIRE_CONSTRUCTION_TYPE":
-                    #self.construccion = value
-                #case _:
-                    #setattr(self, atributo.lower(), None) 
+        for ind in range(len(dir_attributes)):
+            atributo = dir_attributes[ind]["id"]
+            value = dir_attributes[ind]['value_name']
+            match atributo:
+                case "AUTOMOTIVE_TIRE_ASPECT_RATIO":
+                    self.ratio = value
+                case "BRAND":
+                    self.marca = value
+                case "LINE":
+                    self.linea = value
+                case "LOAD_INDEX":
+                    self.carga = value
+                case "MODEL":
+                    self.modelo = value
+                case "RIM_DIAMETER":
+                    self.diametro = value
+                case "SECTION_WIDTH":
+                    self.ancho = value
+                case "SERVICE_TYPE":
+                    self.servicio = value
+                case "TERRAIN_TYPE":
+                    self.terreno = value
+                case "TIRE_CONSTRUCTION_TYPE":
+                    self.construccion = value
+                case _:
+                    setattr(self, atributo.lower(), None) 
 
         catalog = item_data['catalog_listing']
 
@@ -79,6 +80,7 @@ class Neumatico:
         self.titulo = item_data['title']
         self.status = item_data['status']
         self.stock = item_data['available_quantity']
+        self.precio = item_data['price']
         #self.tienda_oficial = False if item_data['official_store_id'] == None else True
 
         #hago el dict para q sea mas rapida la busqueda
@@ -91,12 +93,8 @@ class Neumatico:
 #las filas indican la cantidad de goma por publicacion (kits, individual)
 #las columnas corresponden a si es de tipo normal, catalogo y la forma de pago (por ahora solo hay 2)
 class Items:
-    row_tuples = [
-    ('sku', '1'),
-    ('sku', '2'),
-    ('sku', '4')
-    ]
-    row_index = pd.MultiIndex.from_tuples(row_tuples, names=['sku', 'cantidad'])
+    #row_tuples = [('sku', '1'), ('sku', '2'), ('sku', '4')]
+    row_index = pd.MultiIndex.from_tuples([], names=['sku', 'cantidad'])
     fpago = ['gold_special', 'gold_pro']
     catalogo = [True, False]
     column_index = pd.MultiIndex.from_product([fpago, catalogo], names=['fpago', 'catalogo'])
@@ -109,8 +107,7 @@ class Items:
 
     #llenar un valor en la tabla
     def __init__(self, item_data):
-        self.id = item_data['id'] #o item_list[i]
-        fpago = item_data['listing_type_id']
+        self.id = item_data['id']
 
         dir_attributes = item_data['attributes']
         for ind in range(len(dir_attributes)):
@@ -146,7 +143,6 @@ class Items:
                 return
 
         Items.df.loc[direccion[0], direccion[1]] = self
-        return
 
 
     

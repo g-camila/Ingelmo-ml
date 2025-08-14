@@ -1,5 +1,4 @@
 import configparser
-import os
 
 def create_config():
     config = configparser.ConfigParser()

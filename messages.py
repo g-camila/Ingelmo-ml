@@ -90,8 +90,6 @@ def handle_error(response, loc, val, tipo):
         idempresa = s.get_config_value('idempresa')
         errores_file = f'{idempresa}_errores.json'
         add_json(errores_file, {'dir':loc, 'tipo':tipo})
-    else:
-        logging.info(f"Se actualizo el item {val.id}") #lo tendria q sacar cuando termine el coso
 
     return
 

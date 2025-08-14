@@ -5,7 +5,7 @@ from threading import Thread, Event
 from time import sleep
 
 class Spinner:
-    def __init__(self, message='Preparando los items '):
+    def __init__(self, message='Conectandose '):
         self._stop_event = Event()
         self._sequence = cycle(['|', '\\', '-', '/'])
         self._message = message
