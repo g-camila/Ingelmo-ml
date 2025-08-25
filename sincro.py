@@ -154,7 +154,7 @@ def main(idempresa=1):
 
     length = len(df_db)
     print("\n")
-    messages.printProgressBar(0, length, prefix = 'Progreso sincro:', suffix = 'Complete', length = 50)
+    messages.printProgressBar(0, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
 
     for i, (index, row) in enumerate(df_db.iterrows(), start=0):
         #fijarse si hay una diferencia entre el precio o stock entre la base d datos y mercado libre
@@ -162,7 +162,7 @@ def main(idempresa=1):
         try:
             rneum = Neumatico.dict[rsku]
         except KeyError:
-            messages.printProgressBar(i + 1, length, prefix = 'Progreso sincro:', suffix = 'Complete', length = 50)
+            messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
             continue  #no existe en ml
 
         mlprecio = rneum.precio
@@ -177,7 +177,7 @@ def main(idempresa=1):
         descartados = descarte(row, dbstock)
 
         if not difprecio and not difstock:
-            messages.printProgressBar(i + 1, length, prefix = 'Progreso sincro:', suffix = 'Complete', length = 50)
+            messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
             continue
         
         cambios[rsku] = {}
@@ -195,7 +195,7 @@ def main(idempresa=1):
             loc = [(rsku, index_item), col]
             sincro(loc, val, cambios[rsku], recargo)
 
-        messages.printProgressBar(i + 1, length, prefix = 'Progreso sincro:', suffix = 'Complete', length = 50)
+        messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
         #not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
     
     spinner = Spinner()
@@ -229,12 +229,16 @@ def main(idempresa=1):
 
     with open(fmyapplog, 'r', encoding='latin-1') as file:
         log_content = file.read()
-    
-    #cadena="insert into historial (idempresa,myapplog,status) values (?, ?, ?)"
-    #values=(idempresa,log_content,'ok')
-    #cursor = conn.cursor()
-    #cursor.execute(cadena,values)
-    #cursor.commit()
+
+
+    cambios_json = json.dumps(cambios)
+
+    cadena="insert into historial (idempresa,myapplog,status) values (?, ?, ?)"
+    values=(idempresa,cambios_json,'ok')
+
+    cursor = conn.cursor()
+    cursor.execute(cadena,values)
+    cursor.commit()
 
     #si siguen habiendo errores es preocupante
     if os.path.exists(errores_file):

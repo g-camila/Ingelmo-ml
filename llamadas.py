@@ -62,3 +62,16 @@ def get_envio(id_envio):
     }
     response = connections.make_request('get', url, headers)
     return response
+
+
+##LLAMADAS A MI ENDPOINT
+
+##sacar historial de notifs
+def notif_historial(app_id):
+    access_token = s.get_config_value('access_token')
+    url = f'https://api.mercadolibre.com/missed_feeds?app_id={app_id}'
+    headers = {
+        'Authorization': f'Bearer {access_token}'
+    }
+    response = connections.make_request('get', url, headers=headers)
+    return response
