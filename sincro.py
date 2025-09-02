@@ -46,14 +46,27 @@ def desact_grupo(sku, filtro=[""], desc=None):
 def descarte(row, stockdb):
     desc = []
     sku = row['cai']
-    if row['observ'] == '*X4':
-        desact_grupo(desc, ["4"], sku)
+    
+    if  stockdb % 2 == 0:
+        desact_grupo(desc, ["2","4"], sku)
+
+    if '*X4' in row['observ'] and '*X2' in row['observ']:
+         desact_grupo(desc, ["2","4"], sku)
+    elif  '*X4' in row['observ'] :
+            desact_grupo(desc, ["4"], sku)
+    elif '*X2' in row['observ']:
+            desact_grupo(desc, ["2"], sku)
+
+       
     match stockdb:
         case 1 | 2:
             filtro = str(stockdb)
             desact_grupo(sku, [filtro], desc)
         case 3:
             desact_grupo(sku, ["1", "2"], desc)
+        # case es par
+    
+
     return desc
 
 

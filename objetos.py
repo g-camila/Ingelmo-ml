@@ -172,7 +172,10 @@ class Items:
     @classmethod
     def iterar_sku(cls, rsku, filtro=[""]):
         items_ml = cls.df.loc[rsku]
-        items_ml = items_ml.drop(filtro) if filtro != [""] else items_ml
+       
+        if filtro != [""]:
+            items_ml = items_ml.drop(filtro, errors='ignore')
+            
         if isinstance(items_ml, pd.DataFrame):
             for index, row in items_ml.iterrows():
                 for col, val in row.items():
