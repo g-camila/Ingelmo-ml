@@ -34,6 +34,8 @@ def armar_ventas():
 
         if response.status_code != 200:
             print(f"Error: {response.status_code} - {response.text}")
+        if response.status_code == 404:
+            continue
 
         envio_status = response.json()["status"]
         envio_substatus = response.json()["substatus"]

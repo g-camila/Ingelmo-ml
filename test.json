@@ -1,0 +1,11 @@
+{
+    "_id": "51412187-8d9c-4782-aa38-e2dc940ed16c",
+    "topic": "payments",
+    "resource": "/collections/123992953779",
+    "user_id": 506946556,
+    "application_id": 4513587235470452,
+    "sent": "2025-09-02T02:13:46.955Z",
+    "attempts": 1,
+    "received": "2025-09-02T02:13:46.852Z",
+    "actions": []
+}

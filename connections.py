@@ -151,21 +151,7 @@ def get_db():
 
     df_db = pd.DataFrame(columns=['cai', 'descripcion', 'precio', 'precio2','existencia', 'observ'])
     for r in records: 
-        df_db = pd.concat([df_db, pd.DataFrame({'cai': [r.cai.strip()], 'descripcion': [r.descripcion], 'precio': [r.precio], 'existencia': [r.existencia], 'observ': [r.observ]})], ignore_index=True)
-
-
-    recargo_values=[]
-    for _ in range(5):
-        idx = random.randint(0, len(df_db) - 1)
-        p1 = df_db.iloc[idx]['precio']
-        p2 = records[idx].precio2
-        if p2 != 0:
-            recargo = p1 / p2
-            recargo_values.append(recargo)
-
-    prom_recargo = round(sum(recargo_values) / len(recargo_values), 3)
-
-    s.update_config('GENERAL', 'recargo', prom_recargo)
+        df_db = pd.concat([df_db, pd.DataFrame({'cai': [r.cai.strip()], 'descripcion': [r.descripcion], 'precio': [r.precio], 'precio2': [r.precio2], 'existencia': [r.existencia], 'observ': [r.observ]})], ignore_index=True)
     
     return df_db
 

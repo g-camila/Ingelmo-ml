@@ -80,7 +80,8 @@ class Neumatico:
         self.titulo = item_data['title']
         self.status = item_data['status']
         self.stock = item_data['available_quantity']
-        self.precio = item_data['price']
+        self.precio = None
+        self.precio2 = None
         #self.tienda_oficial = False if item_data['official_store_id'] == None else True
 
         #hago el dict para q sea mas rapida la busqueda
@@ -130,6 +131,10 @@ class Items:
         fpago = item_data["listing_type_id"]
         self.status = item_data['status']
         self.sincronizada = item_data['item_relations'] != []
+
+        #ahora agrego precio y stock            :)
+        #self.precio = item_data['price']
+        #self.stock = item_data['available_quantity']
 
         direccion = [(self.sku, cant), (fpago, catalog)]
         #guardar direccion del ultimo item agregado!!

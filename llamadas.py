@@ -63,18 +63,6 @@ def get_envio(id_envio):
     response = connections.make_request('get', url, headers)
     return response
 
-def user_info():
-    access_token = s.get_config_value('access_token')
-    user_id = s.get_config_value('user_id')
-    url = f'https://api.mercadolibre.com/users/{user_id}'
-    headers = {
-        'Authorization': f'Bearer {access_token}'
-    }
-    response = requests.get(url, headers=headers)
-    return response
-
-
-
 
 ##LLAMADAS A MI ENDPOINT
 

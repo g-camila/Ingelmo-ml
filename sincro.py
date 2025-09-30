@@ -46,16 +46,15 @@ def desact_grupo(sku, filtro=[""], desc=None):
 def descarte(row, stockdb):
     desc = []
     sku = row['cai']
-    
     if  stockdb % 2 == 0:
-        desact_grupo(desc, ["2","4"], sku)
+        desact_grupo(sku, ["2","4"], desc)
 
     if '*X4' in row['observ'] and '*X2' in row['observ']:
-         desact_grupo(desc, ["2","4"], sku)
-    elif  '*X4' in row['observ'] :
-            desact_grupo(desc, ["4"], sku)
+         desact_grupo(sku, ["2","4"], desc)
+    elif '*X4' in row['observ'] :
+            desact_grupo(sku, ["4"], desc)
     elif '*X2' in row['observ']:
-            desact_grupo(desc, ["2"], sku)
+            desact_grupo(sku, ["2"], desc)
 
        
     match stockdb:
@@ -64,23 +63,40 @@ def descarte(row, stockdb):
             desact_grupo(sku, [filtro], desc)
         case 3:
             desact_grupo(sku, ["1", "2"], desc)
-        # case es par
     
-
     return desc
 
 
 #limpiar los repetidos y los items sin trackear en neum
 def corregir():
+    #quiero corregir que haya andado bien lo de asignar el precio2
+    keys_to_delete = []
+    for sku, neum in Neumatico.dict.items():
+        if neum.precio2 is None:
+            if not Items.df.loc[sku]['gold_pro'].isna().all().all():
+                keys_to_delete.append(sku)
+
+    for key in keys_to_delete:
+        del Neumatico.dict[key]
+
     skus = Items.df.index.get_level_values(0)
     for sku in skus:
         if sku not in Neumatico.dict:
+            if sku not in keys_to_delete:
+                keys_to_delete.append(sku)
             for index_item, col, val in Items.iterar_sku(sku):
                 dir = [(sku, index_item), col]
                 response = desactivar(col, val)
                 messages.handle_error(response, dir, val, 'desact')
-                mensaje = f"Las instancias del sku {sku} no tienen un neumatico modelo: 1 cantidad, forma de pago sin cuotas. Se desactivan todos."
-                messages.send_email(0, "Falta un neumatico modelo", mensaje)
+
+    if keys_to_delete:
+        lista = "\n".join(keys_to_delete)
+        mensaje = (
+            "No se pudo asignar precio2 a los siguientes skus: \n\n"
+            f"{lista}"
+        )
+        messages.send_email(0, "Sku sin asignar", mensaje)
+
 
     for sku in Items.repetidos:
         for strdir in Items.repetidos[sku]:
@@ -91,14 +107,15 @@ def corregir():
                 messages.handle_error(response, dir, val, 'desact')
 
 
-def sincro(loc, val, cambios, recargo):
+def sincro(loc, val, cambios):
     if val.status == 'under_review':
         return
     
     data = {}
     if 'precio' in cambios:
         precio = cambios['precio']
-        new_precio = lectura.precio_real(precio, int(precio*recargo), loc)
+        precio2 = cambios['precio2']
+        new_precio = lectura.precio_real(precio, precio2, loc)
         data['price'] = new_precio
     if 'stock' in cambios:
         stock = cambios['stock']
@@ -136,6 +153,7 @@ def main(idempresa=1):
 
     spinner.stop()
 
+
     lectura.leer_neums(items_list)
     corregir()
 
@@ -163,11 +181,11 @@ def main(idempresa=1):
     ml_not_db = [sku for sku in ml_skus if sku not in db_skus]
 
     cambios = {}
-    recargo = float(s.get_config_value('recargo'))
 
     length = len(df_db)
     print("\n")
     messages.printProgressBar(0, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
+
 
     for i, (index, row) in enumerate(df_db.iterrows(), start=0):
         #fijarse si hay una diferencia entre el precio o stock entre la base d datos y mercado libre
@@ -179,11 +197,13 @@ def main(idempresa=1):
             continue  #no existe en ml
 
         mlprecio = rneum.precio
+        mlprecio2 = rneum.precio2
         mlstock = rneum.stock
         dbprecio = int(row['precio'])
+        dbprecio2 = int(row['precio2'])
         dbstock = max(0, int(row['existencia']) - dict_ventas.get(rsku, 0))
 
-        difprecio = mlprecio != dbprecio
+        difprecio = mlprecio != dbprecio or mlprecio2 != dbprecio2
         difstock = mlstock != dbstock
 
         #funcion que se fija si el item entra en los requisitos para desactivarlo por default
@@ -199,6 +219,7 @@ def main(idempresa=1):
             cambios[rsku]['stock'] = dbstock
         if difprecio:
             cambios[rsku]['precio'] = dbprecio
+            cambios[rsku]['precio2'] = dbprecio2
 
         for index_item, col, val in Items.iterar_sku(rsku):
             #el 99% que sea de catalogo va a significar que esta vinculado
@@ -206,7 +227,7 @@ def main(idempresa=1):
             if val.id in descartados or val.sincronizada:
                 continue
             loc = [(rsku, index_item), col]
-            sincro(loc, val, cambios[rsku], recargo)
+            sincro(loc, val, cambios[rsku])
 
         messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
         #not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
@@ -216,7 +237,6 @@ def main(idempresa=1):
 
     for sku in ml_not_db:
         desact_grupo(sku)
-
 
     #lo intento otra vez
     if os.path.exists(errores_file):

@@ -27,6 +27,7 @@ def stock_real(stock, dir):
 def leer_neums(items_list, batch_size=20):
     i=0
     access_token = s.get_config_value('access_token')
+    dict_p2 = {}
 
     #lo que se deberia estar haciendo aca es guardar la info de la ultima vez que lei los items
     #y solo buscar los atributos de todo de lo que no se leyo todavia para agregarlo
@@ -63,11 +64,30 @@ def leer_neums(items_list, batch_size=20):
             cant = Items.get_cant(current)
             fpago = Items.get_fpago(current)
 
-            #no puedo suponer que el neumatico modelo existe todas las veces
-            #voy a hacer un cosito d prioridad para resolver el tema
-            if sku not in Neumatico.dict and cant == 1 and fpago == 0:
-                n = Neumatico(item_data)
-                n.item_dir = current
+            #garantizar que haya precio de 1 de precio2 
+            #cuando se crea el neumatico si es de fpago 1 se asigna el precio de 1
+            if cant == 1:
+                if sku not in Neumatico.dict:
+                    n = Neumatico(item_data)
+                    n.item_dir = current
+                    #caso que se creo el neum y tenia un valor para precio2 de antes
+                    if sku in dict_p2 and Neumatico.dict[sku].precio2 is None:
+                        Neumatico.dict[sku].precio2 = dict_p2.pop(sku)
+                if fpago == 0:
+                    Neumatico.dict[sku].precio = item_data['price']
+                elif fpago == 1: #tiene prioridad ese pq es el mas accurate que tenemos sin haber redondeado
+                    Neumatico.dict[sku].precio2 = item_data['price']
+                    if sku in dict_p2:
+                        del dict_p2[sku]
+
+            if fpago == 1 and sku not in dict_p2 and (sku not in Neumatico.dict or Neumatico.dict[sku].precio2 is None):
+                dict_p2[sku] = item_data['price'] // cant
+                if sku in Neumatico.dict and Neumatico.dict[sku].precio2 is None:
+                    Neumatico.dict[sku].precio2 = dict_p2.pop(sku)  #caso en el que se crea el neum y tuve que esperar para que llegue un valor de precio2
+
+            #cada vez que se crea un neumatico y cada vez que llega un neumatico nuevo con recargo,
+            #me guardo el precio2 o lo agrego al neumatico al precio2
+
         messages.printProgressBar(i, length, prefix = 'Leyendo items:', suffix = 'Complete', length = 50)
 
 def main(idempresa=1):
