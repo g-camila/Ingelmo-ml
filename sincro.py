@@ -71,10 +71,13 @@ def descarte(row, stockdb):
 def corregir():
     #quiero corregir que haya andado bien lo de asignar el precio2
     keys_to_delete = []
+    neums_errores = []
     for sku, neum in Neumatico.dict.items():
         if neum.precio2 is None:
             if not Items.df.loc[sku]['gold_pro'].isna().all().all():
                 keys_to_delete.append(sku)
+        if not neum.congruente:
+            neums_errores.append(sku)
 
     for key in keys_to_delete:
         del Neumatico.dict[key]
@@ -215,9 +218,9 @@ def main(idempresa=1):
         
         cambios[rsku] = {}
         #guardar en un dict los cambios
-        if difstock:
+        if difstock or not rneum.congruente:
             cambios[rsku]['stock'] = dbstock
-        if difprecio:
+        if difprecio or not rneum.congruente:
             cambios[rsku]['precio'] = dbprecio
             cambios[rsku]['precio2'] = dbprecio2
 

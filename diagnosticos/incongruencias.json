@@ -1,0 +1,3761 @@
+{
+    "117424": {
+        "fue leido": false,
+        "precio": {
+            "deberia valer": 464442,
+            "error": 411031
+        }
+    },
+    "089576": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1874992,
+            "error": 2445640
+        }
+    },
+    "055801": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 526368,
+            "error": 557214
+        }
+    },
+    "006236": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1597824,
+            "error": 1864092
+        }
+    },
+    "903727": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1739248,
+            "error": 2117344
+        }
+    },
+    "282216": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1363072,
+            "error": 1777920
+        }
+    },
+    "776449": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1548142,
+            "error": 1364606
+        }
+    },
+    "186179": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2352704,
+            "error": 2696124
+        }
+    },
+    "431065": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 891850,
+            "error": 1059878
+        }
+    },
+    "548742": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 990808,
+            "error": 1114428
+        }
+    },
+    "955923": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 421500,
+            "error": 456449
+        }
+    },
+    "126305": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 309628,
+            "error": 442384
+        }
+    },
+    "749292": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 386575,
+            "error": 350673
+        }
+    },
+    "985538": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 278665,
+            "error": 278607
+        }
+    },
+    "172276": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 471446,
+            "error": 459954
+        }
+    },
+    "777386": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1136036,
+            "error": 1153216
+        }
+    },
+    "513721": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 443496,
+            "error": 517412
+        }
+    },
+    "452329": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1318928,
+            "error": 1346992
+        }
+    },
+    "732422": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 744984,
+            "error": 791358
+        }
+    },
+    "795652": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 511726,
+            "error": 533048
+        }
+    },
+    "267565": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 852878,
+            "error": 888414
+        }
+    },
+    "343343": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 606146,
+            "error": 722688
+        }
+    },
+    "500453": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 511726,
+            "error": 533048
+        }
+    },
+    "794074": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1023452,
+            "error": 1066096
+        }
+    },
+    "626309": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3888888,
+            "error": 5072464
+        }
+    },
+    "847587": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 873456,
+            "error": 942892
+        }
+    },
+    "483453": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3411516,
+            "error": 3553660
+        }
+    },
+    "201682": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1364606,
+            "error": 1421464
+        }
+    },
+    "703087": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1023454,
+            "error": 1066098
+        }
+    },
+    "815490": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2994716,
+            "error": 3556060
+        }
+    },
+    "734070": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2786656,
+            "error": 2865672
+        }
+    },
+    "623457": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1857770,
+            "error": 1791046
+        }
+    },
+    "394086": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3793996,
+            "error": 3232780
+        }
+    },
+    "613545": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1091684,
+            "error": 1137172
+        }
+    },
+    "811587": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1787960,
+            "error": 1616388
+        }
+    },
+    "420038": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 648188,
+            "error": 675194
+        }
+    },
+    "864953": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 477612,
+            "error": 497512
+        }
+    },
+    "637885": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 682302,
+            "error": 710732
+        }
+    },
+    "292682": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1023454,
+            "error": 1066098
+        }
+    },
+    "773625": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1637524,
+            "error": 1705756
+        }
+    },
+    "184228": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 682302,
+            "error": 710732
+        }
+    },
+    "196656": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 682302,
+            "error": 710732
+        }
+    },
+    "935573": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1705756,
+            "error": 1776828
+        }
+    },
+    "792796": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1432836,
+            "error": 1492536
+        }
+    },
+    "167795": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 614072,
+            "error": 639658
+        }
+    },
+    "615912": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1616388,
+            "error": 1445376
+        }
+    },
+    "766218": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 852878,
+            "error": 888414
+        }
+    },
+    "897526": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1228144,
+            "error": 1279316
+        }
+    },
+    "457942": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 461624,
+            "error": 471446
+        }
+    },
+    "146108": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2740702,
+            "error": 3140624
+        }
+    },
+    "185172": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 511726,
+            "error": 533048
+        }
+    },
+    "320262": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 613272,
+            "error": 471446
+        }
+    },
+    "408613": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 588294,
+            "error": 471446
+        }
+    },
+    "402748": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3096284,
+            "error": 2729212
+        }
+    },
+    "632600": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2973158,
+            "error": 3407000
+        }
+    },
+    "631950": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1616390,
+            "error": 1497358
+        }
+    },
+    "744654": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2477028,
+            "error": 2388060
+        }
+    },
+    "860113": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2660674,
+            "error": 3048918
+        }
+    },
+    "763422": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 5185736,
+            "error": 5797720
+        }
+    },
+    "184505": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1548142,
+            "error": 1364606
+        }
+    },
+    "922303": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2259948,
+            "error": 2393020
+        }
+    },
+    "817354": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2294976,
+            "error": 2993448
+        }
+    },
+    "994854": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1857770,
+            "error": 1705758
+        }
+    },
+    "817348": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 5514324,
+            "error": 7192596
+        }
+    },
+    "681104": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2364290,
+            "error": 3083858
+        }
+    },
+    "608562": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1857770,
+            "error": 1705758
+        }
+    },
+    "200803": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 5149928,
+            "error": 6147296
+        }
+    },
+    "724271": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3100528,
+            "error": 3466428
+        }
+    },
+    "617546": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4611864,
+            "error": 6015476
+        }
+    },
+    "374598": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1454752,
+            "error": 1396302
+        }
+    },
+    "310226": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4197564,
+            "error": 5475084
+        }
+    },
+    "824985": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2831586,
+            "error": 3785566
+        }
+    },
+    "452361": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2909504,
+            "error": 2792604
+        }
+    },
+    "566054": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1364606,
+            "error": 1421464
+        }
+    },
+    "202279": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 5278476,
+            "error": 5901404
+        }
+    },
+    "876384": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2571590,
+            "error": 2678740
+        }
+    },
+    "882370": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2167396,
+            "error": 2046908
+        }
+    },
+    "946969": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2193864,
+            "error": 2452768
+        }
+    },
+    "731632": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4585996,
+            "error": 5474148
+        }
+    },
+    "720439": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2586224,
+            "error": 2532344
+        }
+    },
+    "337467": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4422592,
+            "error": 5768600
+        }
+    },
+    "167883": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2605478,
+            "error": 2912956
+        }
+    },
+    "385103": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3715540,
+            "error": 4059704
+        }
+    },
+    "709882": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1548142,
+            "error": 1658724
+        }
+    },
+    "999908": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3253828,
+            "error": 3445436
+        }
+    },
+    "522255": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1114662,
+            "error": 1023454
+        }
+    },
+    "856217": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3557132,
+            "error": 3976920
+        }
+    },
+    "967880": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1538998,
+            "error": 1907004
+        }
+    },
+    "399680": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1238514,
+            "error": 1393034
+        }
+    },
+    "241279": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1996176,
+            "error": 2287458
+        }
+    },
+    "414419": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4178340,
+            "error": 5450008
+        }
+    },
+    "919695": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2197542,
+            "error": 2518206
+        }
+    },
+    "873387": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2181746,
+            "error": 2500104
+        }
+    },
+    "711247": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 928884,
+            "error": 852878
+        }
+    },
+    "120853": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2916356,
+            "error": 3260524
+        }
+    },
+    "967701": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2914460,
+            "error": 4804920
+        }
+    },
+    "760725": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3049196,
+            "error": 3977212
+        }
+    },
+    "432853": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1548142,
+            "error": 1296376
+        }
+    },
+    "921152": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3230060,
+            "error": 4213124
+        }
+    },
+    "987704": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1647728,
+            "error": 1888164
+        }
+    },
+    "974816": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1245904,
+            "error": 1427706
+        }
+    },
+    "661828": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2962380,
+            "error": 3863976
+        }
+    },
+    "653882": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 805034,
+            "error": 784648
+        }
+    },
+    "387467": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1947786,
+            "error": 2540590
+        }
+    },
+    "744835": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1728820,
+            "error": 2254982
+        }
+    },
+    "248127": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 808194,
+            "error": 852006
+        }
+    },
+    "952926": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2875852,
+            "error": 3432808
+        }
+    },
+    "271179": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1930424,
+            "error": 2517944
+        }
+    },
+    "629881": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1075952,
+            "error": 1403416
+        }
+    },
+    "534679": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1356860,
+            "error": 1516986
+        }
+    },
+    "948389": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3288420,
+            "error": 4289244
+        }
+    },
+    "986630": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2899408,
+            "error": 3781836
+        }
+    },
+    "497906": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1095494,
+            "error": 1255348
+        }
+    },
+    "253958": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1085494,
+            "error": 1415862
+        }
+    },
+    "765737": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 928884,
+            "error": 955224
+        }
+    },
+    "885068": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1671992,
+            "error": 1637524
+        }
+    },
+    "316135": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1933764,
+            "error": 2522300
+        }
+    },
+    "831899": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1730404,
+            "error": 2257050
+        }
+    },
+    "348624": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1238512,
+            "error": 1023452
+        }
+    },
+    "576191": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 976216,
+            "error": 673496
+        }
+    },
+    "953772": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1074358,
+            "error": 1401338
+        }
+    },
+    "612705": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1795844,
+            "error": 1705756
+        }
+    },
+    "922284": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2026436,
+            "error": 2265580
+        }
+    },
+    "604586": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1061988,
+            "error": 1179796
+        }
+    },
+    "345504": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2265176,
+            "error": 2532496
+        }
+    },
+    "777556": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1390208,
+            "error": 1813314
+        }
+    },
+    "175391": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 613272,
+            "error": 893980
+        }
+    },
+    "508642": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1231012,
+            "error": 1605668
+        }
+    },
+    "812857": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2170988,
+            "error": 2831724
+        }
+    },
+    "909882": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1155326,
+            "error": 1291668
+        }
+    },
+    "926063": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1152934,
+            "error": 1345090
+        }
+    },
+    "112640": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 982200,
+            "error": 1098112
+        }
+    },
+    "710920": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 952598,
+            "error": 1242520
+        }
+    },
+    "313698": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 574716,
+            "error": 538796
+        }
+    },
+    "969447": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1004476,
+            "error": 1310186
+        }
+    },
+    "212105": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1798496,
+            "error": 2010744
+        }
+    },
+    "345344": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 927626,
+            "error": 788478
+        }
+    },
+    "567574": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1956708,
+            "error": 2187624
+        }
+    },
+    "371721": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 735488,
+            "error": 959332
+        }
+    },
+    "155894": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 2,
+            "error": 2
+        }
+    },
+    "270015": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1978180,
+            "error": 2580236
+        }
+    },
+    "721907": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2422572,
+            "error": 3159876
+        }
+    },
+    "152858": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 774070,
+            "error": 818762
+        }
+    },
+    "217502": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 1,
+            "error": 1
+        }
+    },
+    "739269": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 935406,
+            "error": 1220096
+        }
+    },
+    "396252": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1434984,
+            "error": 1684580
+        }
+    },
+    "230527": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1694540,
+            "error": 2210272
+        }
+    },
+    "133404": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2153580,
+            "error": 2809020
+        }
+    },
+    "984057": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 924302,
+            "error": 981700
+        }
+    },
+    "873342": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 545980,
+            "error": 511856
+        }
+    },
+    "341189": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1157790,
+            "error": 1409484
+        }
+    },
+    "282553": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1656544,
+            "error": 2160712
+        }
+    },
+    "699370": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1238512,
+            "error": 1091684
+        }
+    },
+    "288543": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 5391324,
+            "error": 6178024
+        }
+    },
+    "379499": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1634942,
+            "error": 1827886
+        }
+    },
+    "221554": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2409026,
+            "error": 2760548
+        }
+    },
+    "773482": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 1,
+            "error": 1
+        }
+    },
+    "387980": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 849088,
+            "error": 1085372
+        }
+    },
+    "987137": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1355044,
+            "error": 1514956
+        }
+    },
+    "184283": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1869876,
+            "error": 2438968
+        }
+    },
+    "243266": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1175616,
+            "error": 1182900
+        }
+    },
+    "186714": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1226544,
+            "error": 2202440
+        }
+    },
+    "752703": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1726852,
+            "error": 2252416
+        }
+    },
+    "132621": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1997916,
+            "error": 2233692
+        }
+    },
+    "837582": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 471446,
+            "error": 461624
+        }
+    },
+    "909050": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1666312,
+            "error": 1910448
+        }
+    },
+    "326125": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 3,
+            "error": 3
+        }
+    },
+    "817321": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 847170,
+            "error": 796020
+        }
+    },
+    "919698": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 610190,
+            "error": 682202
+        }
+    },
+    "325838": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1935368,
+            "error": 2380132
+        }
+    },
+    "666924": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 471446,
+            "error": 808360
+        }
+    },
+    "607841": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1645240,
+            "error": 1632224
+        }
+    },
+    "711389": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 808360,
+            "error": 926356
+        }
+    },
+    "396922": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 574468,
+            "error": 642264
+        }
+    },
+    "763718": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1548140,
+            "error": 1569296
+        }
+    },
+    "350723": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2188864,
+            "error": 2456196
+        }
+    },
+    "397469": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1857768,
+            "error": 1990048
+        }
+    },
+    "885912": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2500556,
+            "error": 2262380
+        }
+    },
+    "120829": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2441608,
+            "error": 2848544
+        },
+        "stock": {
+            "deberian haber": 1,
+            "error": 1
+        }
+    },
+    "928949": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 683710,
+            "error": 891796
+        }
+    },
+    "443149": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1256664,
+            "error": 1709860
+        }
+    },
+    "184441": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2352268,
+            "error": 3068176
+        }
+    },
+    "960358": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3000896,
+            "error": 3355040
+        }
+    },
+    "946785": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1881756,
+            "error": 2103828
+        }
+    },
+    "278029": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 773918,
+            "error": 1059938
+        }
+    },
+    "863357": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1610068,
+            "error": 2149252
+        }
+    },
+    "873354": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2783012,
+            "error": 3111444
+        }
+    },
+    "812874": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1940644,
+            "error": 2531276
+        }
+    },
+    "710345": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1425656,
+            "error": 1753274
+        }
+    },
+    "046026": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2786656,
+            "error": 2729212
+        }
+    },
+    "984691": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1052736,
+            "error": 1023454
+        }
+    },
+    "179044": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4374040,
+            "error": 5705268
+        }
+    },
+    "920336": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1790224,
+            "error": 2101574
+        }
+    },
+    "675543": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1548330,
+            "error": 1731052
+        }
+    },
+    "443196": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1797296,
+            "error": 2009400
+        }
+    },
+    "421073": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1114662,
+            "error": 1078892
+        }
+    },
+    "361598": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4977716,
+            "error": 5565148
+        }
+    },
+    "785209": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3814468,
+            "error": 4264620
+        }
+    },
+    "676658": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1315272,
+            "error": 1470490
+        }
+    },
+    "969831": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2013936,
+            "error": 2626876
+        }
+    },
+    "416384": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 978516,
+            "error": 1093992
+        }
+    },
+    "826129": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2339936,
+            "error": 2616080
+        }
+    },
+    "812928": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1077666,
+            "error": 1204846
+        }
+    },
+    "158582": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1084548,
+            "error": 1333802
+        }
+    },
+    "049986": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 976020,
+            "error": 1273070
+        }
+    },
+    "835308": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1508836,
+            "error": 2066442
+        }
+    },
+    "373670": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1189044,
+            "error": 1550928
+        }
+    },
+    "882848": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2962624,
+            "error": 3312252
+        }
+    },
+    "242407": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2471156,
+            "error": 2762784
+        }
+    },
+    "823358": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2692888,
+            "error": 3512464
+        }
+    },
+    "299132": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1156942,
+            "error": 1358170
+        }
+    },
+    "880470": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2184524,
+            "error": 2686572
+        }
+    },
+    "545416": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2043548,
+            "error": 2388060
+        }
+    },
+    "221263": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 928884,
+            "error": 995024
+        }
+    },
+    "793271": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2506344,
+            "error": 2455848
+        }
+    },
+    "631595": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2092396,
+            "error": 2547264
+        }
+    },
+    "138156": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2043548,
+            "error": 2189516
+        }
+    },
+    "836145": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1194030,
+            "error": 1243782
+        }
+    },
+    "897613": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2683160,
+            "error": 3499772
+        }
+    },
+    "593096": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2167396,
+            "error": 2046908
+        }
+    },
+    "347491": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1406324,
+            "error": 1926052
+        }
+    },
+    "072604": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1584304,
+            "error": 1771272
+        }
+    },
+    "504069": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1300464,
+            "error": 1453936
+        }
+    },
+    "388514": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2147294,
+            "error": 2460626
+        }
+    },
+    "941156": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2879540,
+            "error": 3943776
+        }
+    },
+    "657337": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2075642,
+            "error": 2320594
+        }
+    },
+    "097208": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2039234,
+            "error": 1743646
+        }
+    },
+    "711191": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1230048,
+            "error": 1604410
+        }
+    },
+    "708227": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3089012,
+            "error": 2617122
+        }
+    },
+    "770932": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2129098,
+            "error": 2360536
+        }
+    },
+    "031073": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1623884,
+            "error": 1815522
+        }
+    },
+    "054188": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 796916,
+            "error": 683114
+        }
+    },
+    "227379": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1070784,
+            "error": 1396676
+        }
+    },
+    "745083": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 951188,
+            "error": 1157968
+        }
+    },
+    "044373": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1766668,
+            "error": 1975160
+        }
+    },
+    "885347": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2253392,
+            "error": 2519324
+        }
+    },
+    "060414": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1295908,
+            "error": 1448842
+        }
+    },
+    "074386": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2096196,
+            "error": 2343572
+        }
+    },
+    "900309": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1766924,
+            "error": 1843796
+        }
+    },
+    "352797": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1814352,
+            "error": 2028468
+        }
+    },
+    "666886": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1834410,
+            "error": 2392710
+        }
+    },
+    "056615": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 1,
+            "error": 1
+        }
+    },
+    "037639": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1393328,
+            "error": 1364606
+        }
+    },
+    "415764": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3242600,
+            "error": 3625268
+        }
+    },
+    "712106": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 6235036,
+            "error": 7442552
+        }
+    },
+    "762575": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1585920,
+            "error": 2068592
+        }
+    },
+    "592741": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3760112,
+            "error": 4028692
+        }
+    },
+    "604847": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 942698,
+            "error": 872794
+        }
+    },
+    "994993": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3663376,
+            "error": 4778320
+        }
+    },
+    "771601": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 791262,
+            "error": 952308
+        },
+        "stock": {
+            "deberian haber": 4,
+            "error": 1
+        }
+    },
+    "715955": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1342868,
+            "error": 1751568
+        }
+    },
+    "176638": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 5,
+            "error": 5
+        }
+    },
+    "004342": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1743072,
+            "error": 1955272
+        }
+    },
+    "959714": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3077996,
+            "error": 3814008
+        }
+    },
+    "047572": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2888372,
+            "error": 3229236
+        }
+    },
+    "131427": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1088164,
+            "error": 1216582
+        }
+    },
+    "706719": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1623496,
+            "error": 1815092
+        }
+    },
+    "904041": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1052736,
+            "error": 995024
+        }
+    },
+    "589212": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1859076,
+            "error": 2078470
+        }
+    },
+    "498036": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 774070,
+            "error": 818762
+        }
+    },
+    "097168": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 724008,
+            "error": 820998
+        }
+    },
+    "051232": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 6,
+            "error": 6
+        }
+    },
+    "047730": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2277072,
+            "error": 2970092
+        }
+    },
+    "890588": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1307880,
+            "error": 1705932
+        }
+    },
+    "711752": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1314908,
+            "error": 1715096
+        }
+    },
+    "018347": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2687562,
+            "error": 3079730
+        }
+    },
+    "877941": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 923398,
+            "error": 1032370
+        }
+    },
+    "648064": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2754648,
+            "error": 3079730
+        }
+    },
+    "034085": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3503480,
+            "error": 3649460
+        }
+    },
+    "954978": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2620620,
+            "error": 2937044
+        }
+    },
+    "235329": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1442276,
+            "error": 1975292
+        }
+    },
+    "061225": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 928884,
+            "error": 852876
+        }
+    },
+    "028500": {
+        "fue leido": false,
+        "precio": {
+            "deberia valer": 907508,
+            "error": 405858
+        }
+    },
+    "860554": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 701438,
+            "error": 784216
+        }
+    },
+    "167089": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3779776,
+            "error": 3834488
+        }
+    },
+    "740801": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 499216,
+            "error": 651152
+        }
+    },
+    "855281": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 761680,
+            "error": 993492
+        }
+    },
+    "737253": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 741496,
+            "error": 1063888
+        }
+    },
+    "436654": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1286064,
+            "error": 1627148
+        }
+    },
+    "402102": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 566756,
+            "error": 776208
+        }
+    },
+    "333672": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 363868,
+            "error": 498360
+        }
+    },
+    "291112": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 333094,
+            "error": 456154
+        }
+    },
+    "251064": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 979412,
+            "error": 1213656
+        }
+    },
+    "812279": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 690700,
+            "error": 990972
+        }
+    },
+    "920995": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 304486,
+            "error": 436840
+        }
+    },
+    "534786": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 657836,
+            "error": 901012
+        }
+    },
+    "981403": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 577812,
+            "error": 791384
+        }
+    },
+    "184336": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 376238,
+            "error": 476022
+        }
+    },
+    "667427": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 866958,
+            "error": 1114428
+        }
+    },
+    "737019": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1987248,
+            "error": 2070052
+        }
+    },
+    "785762": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1752448,
+            "error": 1825468
+        }
+    },
+    "412869": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 950480,
+            "error": 1239756
+        }
+    },
+    "129780": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3900672,
+            "error": 5087832
+        }
+    },
+    "294826": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2166680,
+            "error": 2256960
+        }
+    },
+    "262100": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3140144,
+            "error": 4095844
+        }
+    },
+    "686902": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3548728,
+            "error": 4628776
+        }
+    },
+    "012750": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2786656,
+            "error": 3184080
+        }
+    },
+    "595258": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1490146,
+            "error": 1814090
+        }
+    },
+    "832916": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 821552,
+            "error": 857482
+        }
+    },
+    "079690": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2063136,
+            "error": 2691052
+        }
+    },
+    "490662": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1347834,
+            "error": 1758044
+        }
+    },
+    "278415": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1025414,
+            "error": 1337498
+        }
+    },
+    "596941": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1528712,
+            "error": 2093660
+        }
+    },
+    "372241": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2546092,
+            "error": 3403886
+        }
+    },
+    "983314": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1112212,
+            "error": 1450712
+        }
+    },
+    "900911": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2233468,
+            "error": 2481636
+        }
+    },
+    "946623": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3328376,
+            "error": 4341360
+        }
+    },
+    "390965": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1213258,
+            "error": 1582512
+        }
+    },
+    "812292": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1315400,
+            "error": 1629952
+        }
+    },
+    "298748": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2752928,
+            "error": 3590776
+        }
+    },
+    "579370": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4099244,
+            "error": 5346840
+        }
+    },
+    "1826560SATR": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1833172,
+            "error": 2169076
+        }
+    },
+    "1825560VERDE": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1447160,
+            "error": 1629628
+        }
+    },
+    "12628001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1057056,
+            "error": 1101100
+        }
+    },
+    "1720545P7": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 397968,
+            "error": 621334
+        }
+    },
+    "1519550P1": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 271342,
+            "error": 306734
+        }
+    },
+    "1721545P1V": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 868296,
+            "error": 1057056
+        }
+    },
+    "11365001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 528528,
+            "error": 550550
+        }
+    },
+    "10497200": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 755040,
+            "error": 786500
+        }
+    },
+    "32270": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 926180,
+            "error": 1118716
+        }
+    },
+    "10320006": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 260488,
+            "error": 283140
+        }
+    },
+    "32214": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 731808,
+            "error": 762300
+        }
+    },
+    "10630200": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 723580,
+            "error": 880880
+        }
+    },
+    "10670200": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 641784,
+            "error": 668524
+        }
+    },
+    "32217": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 967612,
+            "error": 1007928
+        }
+    },
+    "32173": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 890924,
+            "error": 928048
+        }
+    },
+    "33079": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1030152,
+            "error": 1254100
+        }
+    },
+    "440348": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 386948,
+            "error": 555190
+        }
+    },
+    "304096": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1144644,
+            "error": 1448236
+        }
+    },
+    "834901": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 323468,
+            "error": 455700
+        }
+    },
+    "876119": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1166836,
+            "error": 1598004
+        }
+    },
+    "942668": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 333404,
+            "error": 456608
+        }
+    },
+    "403710": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 929696,
+            "error": 1176240
+        }
+    },
+    "368103": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 468482,
+            "error": 519388
+        }
+    },
+    "645769": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 633522,
+            "error": 784982
+        }
+    },
+    "367768": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 894748,
+            "error": 1131964
+        }
+    },
+    "678104": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 752864,
+            "error": 1031112
+        }
+    },
+    "751695": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1261320,
+            "error": 1645200
+        }
+    },
+    "567419": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1627628,
+            "error": 2067198
+        }
+    },
+    "681805": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1391950,
+            "error": 1724798
+        }
+    },
+    "214525": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1172402,
+            "error": 1529220
+        }
+    },
+    "179454": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1555436,
+            "error": 2333154
+        }
+    },
+    "184440": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3760804,
+            "error": 4905396
+        }
+    },
+    "769514": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3234816,
+            "error": 4219324
+        }
+    },
+    "513293": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2490516,
+            "error": 3248500
+        }
+    },
+    "009051": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1545322,
+            "error": 2116412
+        }
+    },
+    "922151": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 742746,
+            "error": 1065696
+        }
+    },
+    "094265": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 890364,
+            "error": 1190332
+        }
+    },
+    "616037": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1841404,
+            "error": 2401830
+        }
+    },
+    "272776": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 922930,
+            "error": 1203822
+        }
+    },
+    "779303": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2439216,
+            "error": 3022536
+        }
+    },
+    "848125": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1798192,
+            "error": 2345468
+        }
+    },
+    "241181": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 711170,
+            "error": 927614
+        }
+    },
+    "616366": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3618020,
+            "error": 4404548
+        }
+    },
+    "21721": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 979704,
+            "error": 834564
+        }
+    },
+    "21273": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 274624,
+            "error": 334324
+        }
+    },
+    "19715002": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 238780,
+            "error": 290690
+        }
+    },
+    "21800": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 253252,
+            "error": 308308
+        }
+    },
+    "21193": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 861060,
+            "error": 935932
+        }
+    },
+    "903168": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 787088,
+            "error": 1052276
+        }
+    },
+    "18917": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1227816,
+            "error": 1494732
+        }
+    },
+    "094817": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1939280,
+            "error": 2529496
+        }
+    },
+    "322504": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4176056,
+            "error": 5719380
+        }
+    },
+    "407379": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2027316,
+            "error": 2776574
+        }
+    },
+    "0468700": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 415504,
+            "error": 432816
+        }
+    },
+    "0451100": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 515914,
+            "error": 628070
+        }
+    },
+    "21813": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 642242,
+            "error": 781860
+        }
+    },
+    "22541": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 466708,
+            "error": 527380
+        }
+    },
+    "0401675": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 348320,
+            "error": 511296
+        }
+    },
+    "11181002": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 470326,
+            "error": 572572
+        }
+    },
+    "0400405": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 300564,
+            "error": 365904
+        }
+    },
+    "16963001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 289432,
+            "error": 327184
+        }
+    },
+    "12811001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1468864,
+            "error": 1788184
+        }
+    },
+    "16031001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1064604,
+            "error": 1108964
+        }
+    },
+    "14582005": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1208064,
+            "error": 1258400
+        }
+    },
+    "17680400": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 633132,
+            "error": 715714
+        }
+    },
+    "17909001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1283568,
+            "error": 1337048
+        }
+    },
+    "11578001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 662074,
+            "error": 748432
+        }
+    },
+    "12487006": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 940654,
+            "error": 880880
+        }
+    },
+    "21597001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 578864,
+            "error": 704704
+        }
+    },
+    "18812001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 904474,
+            "error": 660660
+        }
+    },
+    "1520565P1": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 451608,
+            "error": 591400
+        }
+    },
+    "1518560CP1H": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 433878,
+            "error": 506506
+        }
+    },
+    "1417565CP1T": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 771152,
+            "error": 882816
+        }
+    },
+    "1417570CP1T": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 401082,
+            "error": 405026
+        }
+    },
+    "1519560PIH": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1051056,
+            "error": 1414320
+        }
+    },
+    "1518565P1": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1060048,
+            "error": 1369704
+        }
+    },
+    "1721555RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 364282,
+            "error": 443472
+        }
+    },
+    "1720550RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 628300,
+            "error": 764888
+        }
+    },
+    "1721550RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 317492,
+            "error": 386514
+        }
+    },
+    "1720545RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 560792,
+            "error": 682704
+        }
+    },
+    "1620555RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 497960,
+            "error": 606216
+        }
+    },
+    "1823540RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 740268,
+            "error": 901196
+        }
+    },
+    "1823550RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 902348,
+            "error": 1098512
+        }
+    },
+    "1823545RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 436910,
+            "error": 531890
+        }
+    },
+    "1822540RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 401044,
+            "error": 488228
+        }
+    },
+    "1821555RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 868928,
+            "error": 1057824
+        }
+    },
+    "1723555RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 402494,
+            "error": 489992
+        }
+    },
+    "1722545RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 290100,
+            "error": 353164
+        }
+    },
+    "1518565S801H": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 2,
+            "error": 2
+        }
+    },
+    "1418565H202": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 407264,
+            "error": 520588
+        }
+    },
+    "1317570H202": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 169792,
+            "error": 206704
+        }
+    },
+    "1520560H202": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 263524,
+            "error": 336852
+        }
+    },
+    "1316570H202": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 314432,
+            "error": 382788
+        }
+    },
+    "1417570H202H": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 383608,
+            "error": 467000
+        }
+    },
+    "1518565RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 459616,
+            "error": 559532
+        }
+    },
+    "1418560RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 399840,
+            "error": 486764
+        }
+    },
+    "1416570RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 194152,
+            "error": 236358
+        }
+    },
+    "1316570RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 173992,
+            "error": 211816
+        }
+    },
+    "1417565RPT": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 182950,
+            "error": 222722
+        }
+    },
+    "1417570RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 382436,
+            "error": 465576
+        }
+    },
+    "1418570RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 457992,
+            "error": 557556
+        }
+    },
+    "1621565RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 695140,
+            "error": 846260
+        }
+    },
+    "1519560RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 509916,
+            "error": 620768
+        }
+    },
+    "1619555RP203": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 2,
+            "error": 2
+        }
+    },
+    "1519555RP203": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 2,
+            "error": 2
+        }
+    },
+    "1520560RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 294840,
+            "error": 339746
+        }
+    },
+    "1620560RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 243968,
+            "error": 297004
+        }
+    },
+    "1619550RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 253994,
+            "error": 309210
+        }
+    },
+    "1522570RL106": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 816864,
+            "error": 994440
+        }
+    },
+    "1518580RL106": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 378994,
+            "error": 461384
+        }
+    },
+    "1417570RL106": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 237704,
+            "error": 289380
+        }
+    },
+    "1621575RL106": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 452078,
+            "error": 550356
+        }
+    },
+    "1620575RL106": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 411642,
+            "error": 508570
+        },
+        "stock": {
+            "deberian haber": 1,
+            "error": 4
+        }
+    },
+    "1519570RL106": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 325696,
+            "error": 396500
+        }
+    },
+    "1520570RL106": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 688916,
+            "error": 838684
+        }
+    },
+    "1518565SATR": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1444568,
+            "error": 1846536
+        }
+    },
+    "0398290": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 244208,
+            "error": 297296
+        }
+    },
+    "1316570RP18": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 156200,
+            "error": 162708
+        }
+    },
+    "1724565SATR": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 790536,
+            "error": 1072802
+        }
+    },
+    "1519560RP18": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 224826,
+            "error": 234194
+        }
+    },
+    "1520565SATR": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1133132,
+            "error": 1060812
+        }
+    },
+    "1726565SATR": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1691260,
+            "error": 1218760
+        }
+    },
+    "1523575RS23": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 479134,
+            "error": 612460
+        }
+    },
+    "1620555S801V": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 477936,
+            "error": 581836
+        }
+    },
+    "1726565RS23H": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 964260,
+            "error": 1232576
+        }
+    },
+    "1625570RS23": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 490514,
+            "error": 528090
+        }
+    },
+    "1519565S801V": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 491112,
+            "error": 627772
+        }
+    },
+    "1724565RS23R": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 536032,
+            "error": 685190
+        }
+    },
+    "1519560S801V": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 431220,
+            "error": 551212
+        }
+    },
+    "1727565RS23": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 988216,
+            "error": 1263200
+        }
+    },
+    "1418560S801H": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 188658,
+            "error": 241156
+        }
+    },
+    "1520565H202V": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 269514,
+            "error": 344508
+        }
+    },
+    "1417565H202T": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 9,
+            "error": 9
+        }
+    },
+    "1619560H202": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 233578,
+            "error": 217050
+        }
+    },
+    "1620560H202H": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 293470,
+            "error": 375132
+        }
+    },
+    "1721550S2000": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 299460,
+            "error": 382788
+        }
+    },
+    "1621565H202H": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 2,
+            "error": 2
+        }
+    },
+    "1721555S2000": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 628864,
+            "error": 584372
+        }
+    },
+    "1619550S2000V": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 256038,
+            "error": 327282
+        }
+    },
+    "1722545S2000W": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 565976,
+            "error": 689016
+        }
+    },
+    "1621575RS01": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 424484,
+            "error": 516762
+        }
+    },
+    "1622565RS01": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 398280,
+            "error": 509108
+        }
+    },
+    "1720550EU72": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 586764,
+            "error": 714324
+        }
+    },
+    "1621555EU72": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 393516,
+            "error": 381826
+        }
+    },
+    "1316570CIIT": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 156158,
+            "error": 162666
+        }
+    },
+    "1721560RU025": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 417754,
+            "error": 508570
+        }
+    },
+    "1623560RU025V": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 371486,
+            "error": 452244
+        }
+    },
+    "1822560RU025": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 421968,
+            "error": 513700
+        }
+    },
+    "1722565RU101": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 411070,
+            "error": 500432
+        }
+    },
+    "1923545RU306": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1196448,
+            "error": 1456544
+        }
+    },
+    "1722560RU101": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 835508,
+            "error": 1017140
+        }
+    },
+    "237665": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1285506,
+            "error": 1592924
+        }
+    },
+    "711230": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1697474,
+            "error": 2214096
+        }
+    },
+    "385430": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1399892,
+            "error": 2099838
+        }
+    },
+    "1416570PT": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 495928,
+            "error": 581380
+        }
+    },
+    "1418565RP203": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 417760,
+            "error": 435168
+        }
+    },
+    "1619560RP226": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 296126,
+            "error": 360502
+        }
+    },
+    "32197": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 938984,
+            "error": 1143108
+        }
+    },
+    "32210": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 757340,
+            "error": 921980
+        }
+    },
+    "34001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 696668,
+            "error": 848118
+        }
+    },
+    "834883": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 466762,
+            "error": 551208
+        }
+    },
+    "577410": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1091448,
+            "error": 1423628
+        }
+    },
+    "1417565C": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 881752,
+            "error": 978152
+        }
+    },
+    "1722545P7W": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 738520,
+            "error": 899070
+        }
+    },
+    "1620555CP7V": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1348108,
+            "error": 1641172
+        }
+    },
+    "15330001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1487428,
+            "error": 1549404
+        }
+    },
+    "1620570NEXNPRIZ": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 825796,
+            "error": 1444164
+        }
+    },
+    "100773": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 679536,
+            "error": 707848
+        }
+    },
+    "1823560ES83": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 756476,
+            "error": 920928
+        }
+    },
+    "284265": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 973268,
+            "error": 1206026
+        }
+    },
+    "1518560EH23": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 211952,
+            "error": 258030
+        }
+    },
+    "813986": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1985900,
+            "error": 2590304
+        }
+    },
+    "1621565ES83": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 324552,
+            "error": 395108
+        }
+    },
+    "1720555RA305": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 619384,
+            "error": 754032
+        }
+    },
+    "1822555RA305": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 451174,
+            "error": 549256
+        }
+    },
+    "1722550RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 728564,
+            "error": 886944
+        }
+    },
+    "494954": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1359660,
+            "error": 1552364
+        }
+    },
+    "204255": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1145880,
+            "error": 1270436
+        }
+    },
+    "126824": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 516342,
+            "error": 606122
+        }
+    },
+    "353604": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1084518,
+            "error": 1414588
+        }
+    },
+    "308917": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1489388,
+            "error": 1813172
+        }
+    },
+    "1523575A929": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1016384,
+            "error": 1237336
+        }
+    },
+    "10594001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 564392,
+            "error": 687086
+        }
+    },
+    "1418565EH226": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 208768,
+            "error": 217466
+        }
+    },
+    "521105": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2888290,
+            "error": 3861372
+        }
+    },
+    "543939": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 4420964,
+            "error": 5910416
+        }
+    },
+    "743002": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 990038,
+            "error": 1226816
+        }
+    },
+    "337123": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1889214,
+            "error": 2464192
+        }
+    },
+    "589028": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2994364,
+            "error": 3327028
+        }
+    },
+    "930232": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 960080,
+            "error": 1127124
+        }
+    },
+    "040225": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1101638,
+            "error": 1508764
+        }
+    },
+    "747001": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 865314,
+            "error": 1241552
+        }
+    },
+    "1215580RL": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 196396,
+            "error": 239090
+        }
+    },
+    "164365": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1319544,
+            "error": 1462960
+        }
+    },
+    "384813": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 2731548,
+            "error": 3562892
+        }
+    },
+    "528180": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1227224,
+            "error": 1360696
+        }
+    },
+    "1619575RL108": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 384334,
+            "error": 467884
+        }
+    },
+    "954867": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 611022,
+            "error": 717310
+        }
+    },
+    "984380": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 528056,
+            "error": 619888
+        }
+    },
+    "21694": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 470326,
+            "error": 561560
+        }
+    },
+    "151214": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1072886,
+            "error": 1469380
+        }
+    },
+    "991863": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 719132,
+            "error": 785300
+        }
+    },
+    "1721560H202": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 706724,
+            "error": 903376
+        }
+    },
+    "291028": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1846932,
+            "error": 2409044
+        }
+    },
+    "1626570RS21H": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 455178,
+            "error": 581836
+        }
+    },
+    "0462654": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 569816,
+            "error": 693692
+        }
+    },
+    "21659": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 697022,
+            "error": 704704
+        }
+    },
+    "22308": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1302444,
+            "error": 1585584
+        }
+    },
+    "60268": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 418840,
+            "error": 431630
+        }
+    },
+    "31680": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 723580,
+            "error": 880880
+        }
+    },
+    "1821550G055": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 433938,
+            "error": 490348
+        }
+    },
+    "403774": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3796416,
+            "error": 5199480
+        }
+    },
+    "448208": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1591730,
+            "error": 2387590
+        }
+    },
+    "15311050RS23": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 591134,
+            "error": 719640
+        }
+    },
+    "943123": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1135660,
+            "error": 1481296
+        }
+    },
+    "727156": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 411544,
+            "error": 552938
+        }
+    },
+    "184355": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 3397124,
+            "error": 4652532
+        }
+    },
+    "1825560HPSV": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 1230084,
+            "error": 1497496
+        }
+    },
+    "1822545RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 451174,
+            "error": 549256
+        }
+    },
+    "1317570RP203": {
+        "fue leido": true,
+        "stock": {
+            "deberian haber": 1,
+            "error": 1
+        }
+    },
+    "772786": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 863788,
+            "error": 1051568
+        }
+    },
+    "1723545RA301": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 745848,
+            "error": 907988
+        }
+    },
+    "1822550RU101": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 868928,
+            "error": 1057824
+        }
+    },
+    "1723565RU025": {
+        "fue leido": true,
+        "precio": {
+            "deberia valer": 905392,
+            "error": 1102220
+        }
+    },
+    "lista de la lectura:": 543,
+    "lista del diagnostico:": 535
+}
