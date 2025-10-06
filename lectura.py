@@ -62,38 +62,13 @@ def leer_neums(items_list, batch_size=20):
             current = Items.ultimo_dir
             sku = Items.get_sku(current)
             cant = Items.get_cant(current)
-            fpago = Items.get_fpago(current)
+            catalog = Items.get_catalogo(current)
 
             #garantizar que haya precio de 1 de precio2 
             #cuando se crea el neumatico si es de fpago 1 se asigna el precio de 1
-            if cant == 1:
-                n = None
-                if sku not in Neumatico.dict:
-                    n = Neumatico(item_data)
-                    n.item_dir = current
-                    #caso que se creo el neum y tenia un valor para precio2 de antes
-                    if sku in dict_p2 and Neumatico.dict[sku].precio2 is None:#
-                        new_p2 = dict_p2.pop(sku)
-                        n.asignar_valido(new_p2, current)
-                    
-                #se podria repetir pero no se si cambiarlo o darle prioridad
-                if n is None: #no tengo ganas de hacer la busqueda si lo acabo de crear
-                    n = Neumatico.dict[sku]
-                n.asignar_valido(item_data['price'], current)
-
-                if fpago == 1 and sku in dict_p2:
-                    del dict_p2[sku]
-
-            if fpago == 1 and sku not in dict_p2 and (sku not in Neumatico.dict or Neumatico.dict[sku].precio2 is None):
-                dict_p2[sku] = item_data['price'] // cant
-                if sku in Neumatico.dict and Neumatico.dict[sku].precio2 is None:
-                    #caso en el que se crea el neum y tuve que esperar para que llegue un valor de precio2
-                    new_p2 = dict_p2.pop(sku)
-                    n = Neumatico.dict[sku]
-                    n.asignar_valido(new_p2, current)
-            
-            #cada vez que se crea un neumatico y cada vez que llega un neumatico nuevo con recargo,
-            #me guardo el precio2 o lo agrego al neumatico al precio2
+            if cant == 1 and sku not in Neumatico.dict and catalog is False:
+                n = Neumatico(item_data)
+                n.item_dir = current
 
         messages.printProgressBar(i, length, prefix = 'Leyendo items:', suffix = 'Complete', length = 50)
 

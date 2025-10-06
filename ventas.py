@@ -30,17 +30,19 @@ def armar_ventas():
 
         #tengo que fijarme si la orden fue despachada desde la id del envio
         #puede no marcar como que recibió el envio el cliente
-        response = llamadas.get_envio(id_envio)
+        response = llamadas.get_envio(id_envio) if id_envio is not None else None
 
-        if response.status_code != 200:
+        if response and response.status_code != 200:
             print(f"Error: {response.status_code} - {response.text}")
-        if response.status_code == 404:
+        if response and response.status_code == 404:
             continue
 
-        envio_status = response.json()["status"]
-        envio_substatus = response.json()["substatus"]
+        
+        envio_status = response.json()["status"] if response is not None else None
+        envio_substatus = response.json()["substatus"] if response is not None else None
         #fijarme si ya se mandó
-        if envio_status == "shipped" or envio_status == "delivered" or (envio_status == "ready_to_ship" and envio_substatus != "ready_to_print"):
+        if envio_status in {'shipped', 'delivered'} or (envio_status == "ready_to_ship" and envio_substatus != "ready_to_print"):
+        #if envio_status == "shipped" or envio_status == "delivered" or (envio_status == "ready_to_ship" and envio_substatus != "ready_to_print"):
             continue
 
         #consultar la cantidad de gomas dentro de ese item

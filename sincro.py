@@ -69,45 +69,13 @@ def descarte(row, stockdb):
 
 #limpiar los repetidos y los items sin trackear en neum
 def corregir():
-    #quiero corregir que haya andado bien lo de asignar el precio2
-    keys_to_delete = []
-    neums_errores = []
-    for sku, neum in Neumatico.dict.items():
-        if neum.precio2 is None:
-            if not Items.df.loc[sku]['gold_pro'].isna().all().all():
-                keys_to_delete.append(sku)
-        if not neum.congruente:
-            neums_errores.append(sku)
-
-    for key in keys_to_delete:
-        del Neumatico.dict[key]
-
-    skus = Items.df.index.get_level_values(0)
-    for sku in skus:
-        if sku not in Neumatico.dict:
-            if sku not in keys_to_delete:
-                keys_to_delete.append(sku)
-            for index_item, col, val in Items.iterar_sku(sku):
-                dir = [(sku, index_item), col]
-                response = desactivar(col, val)
-                messages.handle_error(response, dir, val, 'desact')
-
-    if keys_to_delete:
-        lista = "\n".join(keys_to_delete)
-        mensaje = (
-            "No se pudo asignar precio2 a los siguientes skus: \n\n"
-            f"{lista}"
-        )
-        messages.send_email(0, "Sku sin asignar", mensaje)
-
-
     for sku in Items.repetidos:
         for strdir in Items.repetidos[sku]:
             dir = eval(strdir)
             for val in Items.repetidos[sku][strdir]:
-                #desactivar y mandar mail avisando que hay que borrar!!
                 response = desactivar(dir[1], val)
                 messages.handle_error(response, dir, val, 'desact')
+
 
 
 def sincro(loc, val, cambios):
@@ -179,7 +147,7 @@ def main(idempresa=1):
 
 
     #ahora me tengo que fijar si hay diferencias entre la db y la info de cada uno de mis neum
-    ml_skus = list(Neumatico.dict.keys())
+    ml_skus = Items.df.index.get_level_values(0).unique().tolist()
     db_skus = df_db['cai'].unique()
     ml_not_db = [sku for sku in ml_skus if sku not in db_skus]
 
@@ -189,49 +157,54 @@ def main(idempresa=1):
     print("\n")
     messages.printProgressBar(0, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
 
-
+    
     for i, (index, row) in enumerate(df_db.iterrows(), start=0):
         #fijarse si hay una diferencia entre el precio o stock entre la base d datos y mercado libre
         rsku = row['cai']
-        try:
-            rneum = Neumatico.dict[rsku]
-        except KeyError:
+        if rsku not in Neumatico.dict:
             messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
             continue  #no existe en ml
 
-        mlprecio = rneum.precio
-        mlprecio2 = rneum.precio2
-        mlstock = rneum.stock
-        dbprecio = int(row['precio'])
-        dbprecio2 = int(row['precio2'])
-        dbstock = max(0, int(row['existencia']) - dict_ventas.get(rsku, 0))
-
-        difprecio = mlprecio != dbprecio or mlprecio2 != dbprecio2
-        difstock = mlstock != dbstock
-
         #funcion que se fija si el item entra en los requisitos para desactivarlo por default
+        dbstock = max(0, int(row['existencia']) - dict_ventas.get(rsku, 0))
         descartados = descarte(row, dbstock)
+        dbprecio1 = int(row['precio'])
+        dbprecio2 = int(row['precio2'])
 
-        if not difprecio and not difstock:
-            messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
-            continue
-        
         cambios[rsku] = {}
-        #guardar en un dict los cambios
-        if difstock or not rneum.congruente:
-            cambios[rsku]['stock'] = dbstock
-        if difprecio or not rneum.congruente:
-            cambios[rsku]['precio'] = dbprecio
-            cambios[rsku]['precio2'] = dbprecio2
-
-        for index_item, col, val in Items.iterar_sku(rsku):
+        for index, col, val in Items.iterar_sku(rsku):
             #el 99% que sea de catalogo va a significar que esta vinculado
             #lo voy a diferenciar por el 1% que seguro me va a cagar
-            if val.id in descartados or val.sincronizada:
+            if val.id in descartados or val.sincronizada or val.status == 'under_review':
                 continue
-            loc = [(rsku, index_item), col]
-            sincro(loc, val, cambios[rsku])
+            loc = [(rsku, index), col]
+            cant = Items.get_cant(loc)
+            fpago = Items.get_fpago(loc)
+            precio_map = {
+                0: dbprecio1,
+                1: dbprecio2
+            }
+            dbprecio = precio_map.get(fpago)*cant
+            idbstock = dbstock//cant
 
+            data = { #ah usaba mapeo para todo
+                'price': dbprecio if val.precio != dbprecio else None,
+                'available_quantity': idbstock if val.stock != idbstock else None
+            }
+            data = {k: v for k, v in data.items() if v is not None}
+
+            if not data:
+                continue
+
+            cambios[rsku][val.id] = data
+
+            catalogo = Items.get_catalogo(loc)
+            data2 = check_cat(data, catalogo, val)
+            response = llamadas.modificar(val.id, data2)
+            messages.handle_error(response, loc, val, 'sincro')
+
+        if cambios[rsku] == {}:
+            del cambios[rsku]
         messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
         #not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
     
@@ -265,7 +238,6 @@ def main(idempresa=1):
 
     with open(fmyapplog, 'r', encoding='latin-1') as file:
         log_content = file.read()
-
 
     cambios_json = json.dumps(cambios)
 

@@ -79,86 +79,10 @@ class Neumatico:
         self.link = item_data['permalink']
         self.titulo = item_data['title']
         self.status = item_data['status']
-        self.stock = item_data['available_quantity']
-        self.precio = None
-        self.precio2 = None
         #self.tienda_oficial = False if item_data['official_store_id'] == None else True
-        self.congruente = True
 
         #hago el dict para q sea mas rapida la busqueda
         Neumatico.dict[self.sku] = self
-
-        #me fijo que el valor q pase sea el correcto
-        self.asignar_valido(self.stock, self.sku, "stock")
-
-
-    def asignar_valido(self, ref_value, dir, mode="precio"):
-        #dependiendo de donde vengo el sku puede contener o ser el valor de dir
-        #me quedaron confusos los nombres ups
-        if mode == "precio":
-            sku = Items.get_sku(dir)
-            fpago = Items.get_fpago(dir)
-            
-        if mode == "stock":
-            sku = dir
-
-        items_ml = Items.df.loc[sku]
-
-        if mode == "precio":
-            if fpago == 0:
-                self.precio = ref_value
-                items_ml = items_ml.drop('gold_pro', axis=1, level=0, errors='ignore')
-            elif fpago == 1:
-                self.precio2 = ref_value
-                items_ml = items_ml.drop('gold_special', axis=1,level=0, errors='ignore')
-
-        congr = True
-        if isinstance(items_ml, pd.DataFrame):
-            non_null_count = items_ml.notnull().sum().sum()
-
-            if non_null_count > 1:
-                for index, row in items_ml.iterrows():
-                    for col, val in row.items():
-                        if pd.notnull(val):
-                            cant = int(index)
-                            if mode == "stock":
-                                congr = val.stock * cant in {ref_value, ref_value+1, ref_value-1, 0} or ref_value==0
-                            elif mode == "precio":
-                                congr = val.precio//cant == ref_value
-
-                            if not congr:
-                                break
-                    if not congr:
-                        break
-
-        if not congr:
-            self.congruente = False
-
-
-    #un control de que el item es congruente con el precio (logico) de los Neum
-    #puedo controlar el stock que puede o no ser el stock o uno menos (si es 0 esta bien tambien)
-    def validar_item(self, dir, iprecio, istock):
-        congruente_p = True
-        congruente_s = True
-        if not self.congruente:
-            return True
-        cant = Items.get_cant(dir)
-        fpago = Items.get_fpago(dir)
-        #lo que viene es feo pero no puedo asumir que solo van a haber dos fpago siempre
-        precio_maps = {
-            0: 'precio',
-            1: 'precio2'
-        }
-        field = precio_maps.get(fpago)
-        nprecio = getattr(self, field, None)
-        if nprecio is not None:
-            congruente_p = iprecio // cant == nprecio
-            
-        #ahora controlo el stock, que pueden ser varios valores
-        congruente_s = istock*cant in {self.stock, self.stock+1, self.stock-1, 0} and istock >= 0
-
-        self.congruente = congruente_p and congruente_s
-        
 
 
 #la clase item es de cada publicacion de mercado libre,
@@ -219,10 +143,6 @@ class Items:
             if not pd.isna(Items.df.loc[direccion[0], direccion[1]]):
                 Items.repetidos.setdefault(self.sku, {}).setdefault(str(direccion), []).append(self)
                 return
-
-        if self.sku in Neumatico.dict:
-            neum = Neumatico.dict[self.sku]
-            neum.validar_item(direccion, self.precio, self.stock)
 
         Items.df.loc[direccion[0], direccion[1]] = self
 
