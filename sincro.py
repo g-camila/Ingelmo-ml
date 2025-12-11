@@ -18,7 +18,7 @@ os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 def check_cat(data, cat, val):
     #preparar el json data!!
-    if not cat: #no catalogo
+    if val.formato_viejo: #no catalogo
         data['id'] = val.variation_id
         data = [data]
         xdata={}
@@ -27,7 +27,7 @@ def check_cat(data, cat, val):
     return data
 
 def desactivar(col, val):
-    if val.status != 'active' or val.status == 'under_review':
+    if val.status != 'active' or val.status == 'under_review' or val.status == 'closed':
         return None
     else:
         data1 = {"available_quantity" : 0}
@@ -79,7 +79,7 @@ def corregir():
 
 
 def sincro(loc, val, cambios):
-    if val.status == 'under_review':
+    if val.status == 'under_review' or val.sttaus == 'closed':
         return
     
     data = {}
@@ -175,7 +175,7 @@ def main(idempresa=1):
         for index, col, val in Items.iterar_sku(rsku):
             #el 99% que sea de catalogo va a significar que esta vinculado
             #lo voy a diferenciar por el 1% que seguro me va a cagar
-            if val.id in descartados or val.sincronizada or val.status == 'under_review':
+            if val.id in descartados or val.sincronizada or val.status == 'under_review' or val.status=='closed':
                 continue
             loc = [(rsku, index), col]
             cant = Items.get_cant(loc)
@@ -236,10 +236,15 @@ def main(idempresa=1):
     end_time = time.time()
     print(f"Execution time: {end_time - start_time} seconds")
 
+    #ahora el log tendria nomas los errores. al re pedo queda esto
     with open(fmyapplog, 'r', encoding='latin-1') as file:
         log_content = file.read()
 
     cambios_json = json.dumps(cambios)
+
+    with open('cambios_output.json', 'w', encoding='utf-8') as outfile:
+        json.dump(cambios, outfile, ensure_ascii=False, indent=2)
+
 
     cadena="insert into historial (idempresa,myapplog,status) values (?, ?, ?)"
     values=(idempresa,cambios_json,'ok')

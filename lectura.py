@@ -1,12 +1,13 @@
+import os
+import sys
 import pandas as pd
 import argparse
-import os
+import logging
+import json
+import settings as s
+import pickle
 import messages
 import connections
-import logging
-import settings as s
-import sys
-import os
 from spin import Spinner
 from objetos import Neumatico, Items
 os.environ['PYTHONIOENCODING'] = 'utf-8'
@@ -27,7 +28,6 @@ def stock_real(stock, dir):
 def leer_neums(items_list, batch_size=20):
     i=0
     access_token = s.get_config_value('access_token')
-    dict_p2 = {}
 
     #lo que se deberia estar haciendo aca es guardar la info de la ultima vez que lei los items
     #y solo buscar los atributos de todo de lo que no se leyo todavia para agregarlo
@@ -58,6 +58,8 @@ def leer_neums(items_list, batch_size=20):
                 sys.exit()
 
             item_data = item_data['body']
+            with open("test.json", "w") as json_file:
+                json.dump(item_data, json_file, indent=4)
             Items(item_data)
             current = Items.ultimo_dir
             sku = Items.get_sku(current)
@@ -71,6 +73,14 @@ def leer_neums(items_list, batch_size=20):
                 n.item_dir = current
 
         messages.printProgressBar(i, length, prefix = 'Leyendo items:', suffix = 'Complete', length = 50)
+
+    #picklear todo
+    #file_path = 'C:\\fuentes\\pickled_lectura.pk1'
+    #Items.df.to_pickle(file_path)
+    #esto hace que todo este en el mismo stream?
+    #pickle.dump(Items.repetidos, file_path)
+    #pickle.dump(Neumatico.dict, file_path)
+
 
 def main(idempresa=1):
     spinner = Spinner()

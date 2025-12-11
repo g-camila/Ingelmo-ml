@@ -56,10 +56,10 @@ class Neumatico:
 
         catalog = item_data['catalog_listing']
 
-        if not catalog:
+        if not catalog and item_data['variations']!=[]:
             dir_attributes = item_data['variations'][0]['attributes']
             self.velocidad = item_data['variations'][0]['attribute_combinations'][0]['value_name']
-            #tengo que ver como esta la velocidad si es que no hay variacion
+        #tengo que ver como esta la velocidad si es que no hay variacion
         else:
             #esta adentro de atributos!!
             for ind in range(len(dir_attributes)):
@@ -102,6 +102,7 @@ class Items:
     ultimo_dir = {}
     #items repetidos no deberian existir, habria que actualizarlos igual
     repetidos={}
+    lost_free_shipping={}
 
     #llenar un valor en la tabla
     def __init__(self, item_data):
@@ -116,7 +117,11 @@ class Items:
         catalog = item_data['catalog_listing']
 
         self.variation_id = None
-        if not catalog:
+
+        self.formato_viejo = not catalog and item_data['variations']!=[]
+        
+        if self.formato_viejo:
+            print("chequeo")
             dir_attributes = item_data['variations'][0]['attributes']
             self.variation_id = item_data['variations'][0]['id']
 
@@ -133,9 +138,14 @@ class Items:
         self.precio = item_data['price']
         self.stock = item_data['available_quantity']
 
+        self.lost_free_shipping = "lost_me2_by_dimensions" in item_data
+
         direccion = [(self.sku, cant), (fpago, catalog)]
         #guardar direccion del ultimo item agregado!!
         Items.ultimo_dir = direccion
+
+        if self.lost_free_shipping:
+            Items.repetidos.setdefault(self.sku, {}).setdefault(str(direccion), []).append(self)
 
         #puede que se repitan los items
         if (self.sku, cant) in Items.df.index:

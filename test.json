@@ -1,11 +1,539 @@
 {
-    "_id": "51412187-8d9c-4782-aa38-e2dc940ed16c",
-    "topic": "payments",
-    "resource": "/collections/123992953779",
-    "user_id": 506946556,
-    "application_id": 4513587235470452,
-    "sent": "2025-09-02T02:13:46.955Z",
-    "attempts": 1,
-    "received": "2025-09-02T02:13:46.852Z",
-    "actions": []
+    "id": "MLA1562363427",
+    "site_id": "MLA",
+    "title": "Kit De 2 Neum\u00e1ticos Michelin Primacy 4+ P 91 V",
+    "family_name": null,
+    "seller_id": 506946556,
+    "category_id": "MLA22195",
+    "user_product_id": "MLAU2985991241",
+    "official_store_id": null,
+    "price": 495624,
+    "base_price": 495624,
+    "original_price": null,
+    "inventory_id": null,
+    "currency_id": "ARS",
+    "initial_quantity": 0,
+    "available_quantity": 0,
+    "sold_quantity": 0,
+    "sale_terms": [
+        {
+            "id": "WARRANTY_TYPE",
+            "name": "Tipo de garant\u00eda",
+            "value_id": "2230279",
+            "value_name": "Garant\u00eda de f\u00e1brica",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "2230279",
+                    "name": "Garant\u00eda de f\u00e1brica",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "INVOICE",
+            "name": "Facturaci\u00f3n",
+            "value_id": "6891885",
+            "value_name": "Factura A",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "6891885",
+                    "name": "Factura A",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "WARRANTY_TIME",
+            "name": "Tiempo de garant\u00eda",
+            "value_id": null,
+            "value_name": "5 a\u00f1os",
+            "value_struct": {
+                "number": 5,
+                "unit": "a\u00f1os"
+            },
+            "values": [
+                {
+                    "id": null,
+                    "name": "5 a\u00f1os",
+                    "struct": {
+                        "number": 5,
+                        "unit": "a\u00f1os"
+                    }
+                }
+            ],
+            "value_type": "number_unit"
+        }
+    ],
+    "buying_mode": "buy_it_now",
+    "listing_type_id": "gold_special",
+    "start_time": "2025-10-21T05:15:56.364Z",
+    "stop_time": "2045-10-16T04:00:00.000Z",
+    "end_time": "2045-10-16T04:00:00.000Z",
+    "expiration_time": "2026-03-01T20:39:39.484Z",
+    "condition": "new",
+    "permalink": "https://articulo.mercadolibre.com.ar/MLA-1562363427-kit-de-2-neumaticos-michelin-primacy-4-p-91-v-_JM",
+    "thumbnail_id": "666357-MLA99846261027_112025",
+    "thumbnail": "http://http2.mlstatic.com/D_666357-MLA99846261027_112025-I.jpg",
+    "pictures": [
+        {
+            "id": "666357-MLA99846261027_112025",
+            "url": "http://http2.mlstatic.com/D_666357-MLA99846261027_112025-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_666357-MLA99846261027_112025-O.jpg",
+            "size": "500x357",
+            "max_size": "1200x859",
+            "quality": ""
+        },
+        {
+            "id": "991853-MLU77933417754_082024",
+            "url": "http://http2.mlstatic.com/D_991853-MLU77933417754_082024-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_991853-MLU77933417754_082024-O.jpg",
+            "size": "375x500",
+            "max_size": "900x1200",
+            "quality": ""
+        },
+        {
+            "id": "846522-MLU78156706851_082024",
+            "url": "http://http2.mlstatic.com/D_846522-MLU78156706851_082024-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_846522-MLU78156706851_082024-O.jpg",
+            "size": "375x500",
+            "max_size": "900x1200",
+            "quality": ""
+        },
+        {
+            "id": "810303-MLU77933183458_082024",
+            "url": "http://http2.mlstatic.com/D_810303-MLU77933183458_082024-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_810303-MLU77933183458_082024-O.jpg",
+            "size": "375x500",
+            "max_size": "900x1200",
+            "quality": ""
+        },
+        {
+            "id": "818777-MLU77933369860_082024",
+            "url": "http://http2.mlstatic.com/D_818777-MLU77933369860_082024-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_818777-MLU77933369860_082024-O.jpg",
+            "size": "375x500",
+            "max_size": "900x1200",
+            "quality": ""
+        },
+        {
+            "id": "958593-MLU78156706901_082024",
+            "url": "http://http2.mlstatic.com/D_958593-MLU78156706901_082024-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_958593-MLU78156706901_082024-O.jpg",
+            "size": "375x500",
+            "max_size": "900x1200",
+            "quality": ""
+        },
+        {
+            "id": "824623-MLU77933330210_082024",
+            "url": "http://http2.mlstatic.com/D_824623-MLU77933330210_082024-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_824623-MLU77933330210_082024-O.jpg",
+            "size": "500x375",
+            "max_size": "1200x900",
+            "quality": ""
+        },
+        {
+            "id": "614039-MLA99845483327_112025",
+            "url": "http://http2.mlstatic.com/D_614039-MLA99845483327_112025-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_614039-MLA99845483327_112025-O.jpg",
+            "size": "500x357",
+            "max_size": "1200x859",
+            "quality": ""
+        }
+    ],
+    "video_id": null,
+    "descriptions": [],
+    "accepts_mercadopago": true,
+    "non_mercado_pago_payment_methods": [],
+    "shipping": {
+        "mode": "me2",
+        "methods": [],
+        "tags": [
+            "mandatory_free_shipping"
+        ],
+        "dimensions": null,
+        "local_pick_up": false,
+        "free_shipping": true,
+        "logistic_type": "xd_drop_off",
+        "store_pick_up": false
+    },
+    "international_delivery_mode": "none",
+    "seller_address": {
+        "address_line": "Bv. Guzman 815",
+        "zip_code": "5000",
+        "city": {
+            "id": "TUxBQ0NBUGNiZGQx",
+            "name": "C\u00f3rdoba"
+        },
+        "state": {
+            "id": "AR-X",
+            "name": "C\u00f3rdoba"
+        },
+        "country": {
+            "id": "AR",
+            "name": "Argentina"
+        },
+        "search_location": {
+            "city": {
+                "id": "TUxBQ0NBUGNiZGQx",
+                "name": "C\u00f3rdoba"
+            },
+            "state": {
+                "id": "TUxBUENPUmFkZGIw",
+                "name": "C\u00f3rdoba"
+            }
+        },
+        "latitude": -31.408316,
+        "longitude": -64.176675,
+        "id": 1377784000
+    },
+    "seller_contact": null,
+    "location": {},
+    "geolocation": {
+        "latitude": -31.408316,
+        "longitude": -64.176675
+    },
+    "coverage_areas": [],
+    "attributes": [
+        {
+            "id": "AUTOMOTIVE_TIRE_ASPECT_RATIO",
+            "name": "Relaci\u00f3n de aspecto",
+            "value_id": "5913921",
+            "value_name": "55",
+            "values": [
+                {
+                    "id": "5913921",
+                    "name": "55",
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "BRAND",
+            "name": "Marca",
+            "value_id": "76166",
+            "value_name": "Michelin",
+            "values": [
+                {
+                    "id": "76166",
+                    "name": "Michelin",
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "GTIN",
+            "name": "C\u00f3digo universal de producto",
+            "value_id": null,
+            "value_name": "3528704440573",
+            "values": [
+                {
+                    "id": null,
+                    "name": "3528704440573",
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "IMPORT_DUTY",
+            "name": "Impuesto interno",
+            "value_id": "49553239",
+            "value_name": "0 %",
+            "values": [
+                {
+                    "id": "49553239",
+                    "name": "0 %",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "IS_RUN_FLAT",
+            "name": "Es run flat",
+            "value_id": "242084",
+            "value_name": "No",
+            "values": [
+                {
+                    "id": "242084",
+                    "name": "No",
+                    "struct": null
+                }
+            ],
+            "value_type": "boolean"
+        },
+        {
+            "id": "ITEM_CONDITION",
+            "name": "Condici\u00f3n del \u00edtem",
+            "value_id": "2230284",
+            "value_name": "Nuevo",
+            "values": [
+                {
+                    "id": "2230284",
+                    "name": "Nuevo",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "LINE",
+            "name": "L\u00ednea",
+            "value_id": "14861558",
+            "value_name": "Primacy 4",
+            "values": [
+                {
+                    "id": "14861558",
+                    "name": "Primacy 4",
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "LOAD_INDEX",
+            "name": "\u00cdndice de carga",
+            "value_id": "75311",
+            "value_name": "91",
+            "values": [
+                {
+                    "id": "75311",
+                    "name": "91",
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "LOAD_RANGE",
+            "name": "Rango de carga",
+            "value_id": "-1",
+            "value_name": null,
+            "values": [
+                {
+                    "id": "-1",
+                    "name": null,
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "MODEL",
+            "name": "Modelo",
+            "value_id": "13387623",
+            "value_name": "Primacy 4+",
+            "values": [
+                {
+                    "id": "13387623",
+                    "name": "Primacy 4+",
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "RIM_DIAMETER",
+            "name": "Di\u00e1metro de la llanta",
+            "value_id": "8175448",
+            "value_name": "16 \"",
+            "values": [
+                {
+                    "id": "8175448",
+                    "name": "16 \"",
+                    "struct": {
+                        "number": 16,
+                        "unit": "\""
+                    }
+                }
+            ],
+            "value_type": "number_unit"
+        },
+        {
+            "id": "SECTION_WIDTH",
+            "name": "Ancho de secci\u00f3n",
+            "value_id": "5913920",
+            "value_name": "205 mm",
+            "values": [
+                {
+                    "id": "5913920",
+                    "name": "205 mm",
+                    "struct": {
+                        "number": 205,
+                        "unit": "mm"
+                    }
+                }
+            ],
+            "value_type": "number_unit"
+        },
+        {
+            "id": "SELLER_SKU",
+            "name": "SKU",
+            "value_id": null,
+            "value_name": "444057",
+            "values": [
+                {
+                    "id": null,
+                    "name": "444057",
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "SERVICE_TYPE",
+            "name": "Tipo de servicio",
+            "value_id": "4369800",
+            "value_name": "P",
+            "values": [
+                {
+                    "id": "4369800",
+                    "name": "P",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "SPEED_INDEX",
+            "name": "\u00cdndice de velocidad",
+            "value_id": "75518",
+            "value_name": "V",
+            "values": [
+                {
+                    "id": "75518",
+                    "name": "V",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "TIRES_NUMBER",
+            "name": "Cantidad de neum\u00e1ticos",
+            "value_id": "2726555",
+            "value_name": "2",
+            "values": [
+                {
+                    "id": "2726555",
+                    "name": "2",
+                    "struct": null
+                }
+            ],
+            "value_type": "number"
+        },
+        {
+            "id": "TIRE_ASPECT_RATIO",
+            "name": "Relaci\u00f3n de aspecto del neum\u00e1tico",
+            "value_id": "22752614",
+            "value_name": "55 %",
+            "values": [
+                {
+                    "id": "22752614",
+                    "name": "55 %",
+                    "struct": {
+                        "number": 55,
+                        "unit": "%"
+                    }
+                }
+            ],
+            "value_type": "number_unit"
+        },
+        {
+            "id": "UNITS_PER_PACK",
+            "name": "Unidades por pack",
+            "value_id": "2726555",
+            "value_name": "2",
+            "values": [
+                {
+                    "id": "2726555",
+                    "name": "2",
+                    "struct": null
+                }
+            ],
+            "value_type": "number"
+        },
+        {
+            "id": "UTQG",
+            "name": "UTQG",
+            "value_id": "-1",
+            "value_name": null,
+            "values": [
+                {
+                    "id": "-1",
+                    "name": null,
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "VALUE_ADDED_TAX",
+            "name": "IVA",
+            "value_id": "48405909",
+            "value_name": "21 %",
+            "values": [
+                {
+                    "id": "48405909",
+                    "name": "21 %",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "VEHICLE_TYPE",
+            "name": "Tipo de veh\u00edculo",
+            "value_id": "11377043",
+            "value_name": "Auto/Camioneta",
+            "values": [
+                {
+                    "id": "11377043",
+                    "name": "Auto/Camioneta",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        }
+    ],
+    "warnings": [],
+    "listing_source": "",
+    "variations": [],
+    "status": "paused",
+    "sub_status": [
+        "out_of_stock"
+    ],
+    "tags": [
+        "catalog_boost",
+        "immediate_payment",
+        "cart_eligible"
+    ],
+    "warranty": "Garant\u00eda de f\u00e1brica: 5 a\u00f1os",
+    "catalog_product_id": "MLA37451287",
+    "domain_id": "MLA-AUTOMOTIVE_TIRES",
+    "seller_custom_field": null,
+    "parent_item_id": null,
+    "differential_pricing": null,
+    "deal_ids": [],
+    "automatic_relist": false,
+    "date_created": "2025-10-21T05:15:56.541Z",
+    "last_updated": "2025-12-11T20:39:39.524Z",
+    "health": null,
+    "catalog_listing": true,
+    "item_relations": [
+        {
+            "id": "MLA2005330700",
+            "variation_id": 182820156228,
+            "stock_relation": 1
+        }
+    ],
+    "channels": [
+        "marketplace"
+    ]
 }
