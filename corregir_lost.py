@@ -8,6 +8,7 @@ import messages
 import connections
 import llamadas
 import lectura
+import objetos
 from spin import Spinner
 from objetos import Neumatico, Items
 os.environ['PYTHONIOENCODING'] = 'utf-8'
@@ -20,19 +21,42 @@ def main(idempresa=1):
     items_list = connections.get_items()
     lectura.leer_neums(items_list)
 
-    for sku in Items.lost_free_shipping:
-        for strdir in Items.lost_free_shipping[sku]:
-            dir = eval(strdir)
-            for val in Items.lost_free_shipping[sku][strdir]:
-                print("aaa")
+    data={}
 
-        
-    #despues de que ande agregar leer el lost como un metodo extra para todas las veces
-    #hacer lista en items de todos los items que tengan true el is lost
-    #y despues que eso se controle aca y que vea que caracteristicas tienen (indice)
+    for item in Items.lost_free_ship:
+        #armar excel
+        #agarrar y armar dict con arrays adentro
+        #columna sku, Normal y columna Catalogo con [id, id, id] por la posibilidad de que sea mas de uno
+        sku = item[0]
+        direccion = item[1]
+        goma = Items.df.loc[(direccion[0], direccion[1])]
+        catalogo = Items.get_catalogo(direccion)
+        if sku not in data:
+            data[sku] = {}
+        if not catalogo:
+            data[sku].setdefault('normal', []).append(goma.id)
+        else:
+            data[sku].setdefault('catalogo', []).append(goma.id)
+
+    print("listo")
+    df = pd.DataFrame.from_dict(data, orient="index")
+    df = df.applymap(lambda x: ", ".join(map(str, x)) if isinstance(x, list) else x)
+    df.to_excel("resultado.xlsx", index=True)
+
+        #if sku not in Items.lost_free_ship:
+            
 
     #item_id = "MLA2055336480" #og normal
     #item_id="MLA2660746900" #nueva
+    #item_id="MLA2055440172"
+
+    
+
+
+
+
+
+    #LO USO PARA CONTROLAR COSAS
     #response = llamadas.get_item_simple(item_id)
     #item_data = response.json()["shipping"]["tags"]
     #is_lost = "lost_me2_by_dimensions" in item_data

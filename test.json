@@ -1,14 +1,15 @@
 {
-    "id": "MLA1562363427",
+    "id": "MLA1606891107",
     "site_id": "MLA",
-    "title": "Kit De 2 Neum\u00e1ticos Michelin Primacy 4+ P 91 V",
-    "family_name": null,
+    "title": "Neum\u00e1tico 225/70 R 15c 112/110s Tl Agilis 3 Michelin \u00cdndice De Velocidad S",
+    "family_name": "Neum\u00e1tico 225/70 R 15c 112/110s Tl Agilis 3 Michelin \u00cdndice De Velocidad S",
+    "family_id": 69558462427534,
     "seller_id": 506946556,
     "category_id": "MLA22195",
-    "user_product_id": "MLAU2985991241",
+    "user_product_id": "MLAU3131469772",
     "official_store_id": null,
-    "price": 495624,
-    "base_price": 495624,
+    "price": 436998,
+    "base_price": 436998,
     "original_price": null,
     "inventory_id": null,
     "currency_id": "ARS",
@@ -16,36 +17,6 @@
     "available_quantity": 0,
     "sold_quantity": 0,
     "sale_terms": [
-        {
-            "id": "WARRANTY_TYPE",
-            "name": "Tipo de garant\u00eda",
-            "value_id": "2230279",
-            "value_name": "Garant\u00eda de f\u00e1brica",
-            "value_struct": null,
-            "values": [
-                {
-                    "id": "2230279",
-                    "name": "Garant\u00eda de f\u00e1brica",
-                    "struct": null
-                }
-            ],
-            "value_type": "list"
-        },
-        {
-            "id": "INVOICE",
-            "name": "Facturaci\u00f3n",
-            "value_id": "6891885",
-            "value_name": "Factura A",
-            "value_struct": null,
-            "values": [
-                {
-                    "id": "6891885",
-                    "name": "Factura A",
-                    "struct": null
-                }
-            ],
-            "value_type": "list"
-        },
         {
             "id": "WARRANTY_TIME",
             "name": "Tiempo de garant\u00eda",
@@ -66,81 +37,48 @@
                 }
             ],
             "value_type": "number_unit"
+        },
+        {
+            "id": "WARRANTY_TYPE",
+            "name": "Tipo de garant\u00eda",
+            "value_id": "2230279",
+            "value_name": "Garant\u00eda de f\u00e1brica",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "2230279",
+                    "name": "Garant\u00eda de f\u00e1brica",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
         }
     ],
     "buying_mode": "buy_it_now",
-    "listing_type_id": "gold_special",
-    "start_time": "2025-10-21T05:15:56.364Z",
-    "stop_time": "2045-10-16T04:00:00.000Z",
-    "end_time": "2045-10-16T04:00:00.000Z",
-    "expiration_time": "2026-03-01T20:39:39.484Z",
+    "listing_type_id": "gold_pro",
+    "start_time": "2025-12-12T05:08:37.983Z",
+    "stop_time": "2045-12-07T04:00:00.000Z",
+    "end_time": "2045-12-07T04:00:00.000Z",
+    "expiration_time": "2026-03-02T05:08:38.081Z",
     "condition": "new",
-    "permalink": "https://articulo.mercadolibre.com.ar/MLA-1562363427-kit-de-2-neumaticos-michelin-primacy-4-p-91-v-_JM",
-    "thumbnail_id": "666357-MLA99846261027_112025",
-    "thumbnail": "http://http2.mlstatic.com/D_666357-MLA99846261027_112025-I.jpg",
+    "permalink": "https://articulo.mercadolibre.com.ar/MLA-1606891107-neumatico-22570-r-15c-112110s-tl-agilis-3-michelin-indice-de-velocidad-s-_JM",
+    "thumbnail_id": "633195-MLA99352895032_112025",
+    "thumbnail": "http://http2.mlstatic.com/D_633195-MLA99352895032_112025-I.jpg",
     "pictures": [
         {
-            "id": "666357-MLA99846261027_112025",
-            "url": "http://http2.mlstatic.com/D_666357-MLA99846261027_112025-O.jpg",
-            "secure_url": "https://http2.mlstatic.com/D_666357-MLA99846261027_112025-O.jpg",
-            "size": "500x357",
-            "max_size": "1200x859",
+            "id": "633195-MLA99352895032_112025",
+            "url": "http://http2.mlstatic.com/D_633195-MLA99352895032_112025-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_633195-MLA99352895032_112025-O.jpg",
+            "size": "472x500",
+            "max_size": "1134x1200",
             "quality": ""
         },
         {
-            "id": "991853-MLU77933417754_082024",
-            "url": "http://http2.mlstatic.com/D_991853-MLU77933417754_082024-O.jpg",
-            "secure_url": "https://http2.mlstatic.com/D_991853-MLU77933417754_082024-O.jpg",
-            "size": "375x500",
-            "max_size": "900x1200",
-            "quality": ""
-        },
-        {
-            "id": "846522-MLU78156706851_082024",
-            "url": "http://http2.mlstatic.com/D_846522-MLU78156706851_082024-O.jpg",
-            "secure_url": "https://http2.mlstatic.com/D_846522-MLU78156706851_082024-O.jpg",
-            "size": "375x500",
-            "max_size": "900x1200",
-            "quality": ""
-        },
-        {
-            "id": "810303-MLU77933183458_082024",
-            "url": "http://http2.mlstatic.com/D_810303-MLU77933183458_082024-O.jpg",
-            "secure_url": "https://http2.mlstatic.com/D_810303-MLU77933183458_082024-O.jpg",
-            "size": "375x500",
-            "max_size": "900x1200",
-            "quality": ""
-        },
-        {
-            "id": "818777-MLU77933369860_082024",
-            "url": "http://http2.mlstatic.com/D_818777-MLU77933369860_082024-O.jpg",
-            "secure_url": "https://http2.mlstatic.com/D_818777-MLU77933369860_082024-O.jpg",
-            "size": "375x500",
-            "max_size": "900x1200",
-            "quality": ""
-        },
-        {
-            "id": "958593-MLU78156706901_082024",
-            "url": "http://http2.mlstatic.com/D_958593-MLU78156706901_082024-O.jpg",
-            "secure_url": "https://http2.mlstatic.com/D_958593-MLU78156706901_082024-O.jpg",
-            "size": "375x500",
-            "max_size": "900x1200",
-            "quality": ""
-        },
-        {
-            "id": "824623-MLU77933330210_082024",
-            "url": "http://http2.mlstatic.com/D_824623-MLU77933330210_082024-O.jpg",
-            "secure_url": "https://http2.mlstatic.com/D_824623-MLU77933330210_082024-O.jpg",
-            "size": "500x375",
-            "max_size": "1200x900",
-            "quality": ""
-        },
-        {
-            "id": "614039-MLA99845483327_112025",
-            "url": "http://http2.mlstatic.com/D_614039-MLA99845483327_112025-O.jpg",
-            "secure_url": "https://http2.mlstatic.com/D_614039-MLA99845483327_112025-O.jpg",
-            "size": "500x357",
-            "max_size": "1200x859",
+            "id": "650492-MLA99835923965_112025",
+            "url": "http://http2.mlstatic.com/D_650492-MLA99835923965_112025-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_650492-MLA99835923965_112025-O.jpg",
+            "size": "472x500",
+            "max_size": "1134x1200",
             "quality": ""
         }
     ],
@@ -201,12 +139,12 @@
         {
             "id": "AUTOMOTIVE_TIRE_ASPECT_RATIO",
             "name": "Relaci\u00f3n de aspecto",
-            "value_id": "5913921",
-            "value_name": "55",
+            "value_id": "5913958",
+            "value_name": "70",
             "values": [
                 {
-                    "id": "5913921",
-                    "name": "55",
+                    "id": "5913958",
+                    "name": "70",
                     "struct": null
                 }
             ],
@@ -227,14 +165,59 @@
             "value_type": "string"
         },
         {
-            "id": "GTIN",
-            "name": "C\u00f3digo universal de producto",
+            "id": "EXTERNAL_NOISE_REDUCTION_EFFICIENCY",
+            "name": "Eficiencia de reducci\u00f3n de ruido externo",
+            "value_id": "11310598",
+            "value_name": "B",
+            "values": [
+                {
+                    "id": "11310598",
+                    "name": "B",
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "EXTERNAL_NOISE_REDUCTION_LEVEL",
+            "name": "Nivel de reducci\u00f3n de ruido externo",
             "value_id": null,
-            "value_name": "3528704440573",
+            "value_name": "72 dBA",
             "values": [
                 {
                     "id": null,
-                    "name": "3528704440573",
+                    "name": "72 dBA",
+                    "struct": {
+                        "number": 72,
+                        "unit": "dBA"
+                    }
+                }
+            ],
+            "value_type": "number_unit"
+        },
+        {
+            "id": "FUEL_SAVING_EFFICIENCY",
+            "name": "Eficiencia de ahorro de combustible",
+            "value_id": "11300935",
+            "value_name": "B",
+            "values": [
+                {
+                    "id": "11300935",
+                    "name": "B",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "GTIN",
+            "name": "C\u00f3digo universal de producto",
+            "value_id": null,
+            "value_name": "3528707492920",
+            "values": [
+                {
+                    "id": null,
+                    "name": "3528707492920",
                     "struct": null
                 }
             ],
@@ -285,12 +268,12 @@
         {
             "id": "LINE",
             "name": "L\u00ednea",
-            "value_id": "14861558",
-            "value_name": "Primacy 4",
+            "value_id": "14683510",
+            "value_name": "Agilis 3",
             "values": [
                 {
-                    "id": "14861558",
-                    "name": "Primacy 4",
+                    "id": "14683510",
+                    "name": "Agilis 3",
                     "struct": null
                 }
             ],
@@ -299,12 +282,12 @@
         {
             "id": "LOAD_INDEX",
             "name": "\u00cdndice de carga",
-            "value_id": "75311",
-            "value_name": "91",
+            "value_id": "84092",
+            "value_name": "112/110",
             "values": [
                 {
-                    "id": "75311",
-                    "name": "91",
+                    "id": "84092",
+                    "name": "112/110",
                     "struct": null
                 }
             ],
@@ -313,12 +296,26 @@
         {
             "id": "LOAD_RANGE",
             "name": "Rango de carga",
-            "value_id": "-1",
-            "value_name": null,
+            "value_id": "4369845",
+            "value_name": "XL",
             "values": [
                 {
-                    "id": "-1",
-                    "name": null,
+                    "id": "4369845",
+                    "name": "XL",
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "MANUFACTURER_TIRE_SIZE",
+            "name": "Tama\u00f1o",
+            "value_id": "11453968",
+            "value_name": "225/70R15",
+            "values": [
+                {
+                    "id": "11453968",
+                    "name": "225/70R15",
                     "struct": null
                 }
             ],
@@ -327,12 +324,12 @@
         {
             "id": "MODEL",
             "name": "Modelo",
-            "value_id": "13387623",
-            "value_name": "Primacy 4+",
+            "value_id": "14683511",
+            "value_name": "Agilis 3",
             "values": [
                 {
-                    "id": "13387623",
-                    "name": "Primacy 4+",
+                    "id": "14683511",
+                    "name": "Agilis 3",
                     "struct": null
                 }
             ],
@@ -341,14 +338,14 @@
         {
             "id": "RIM_DIAMETER",
             "name": "Di\u00e1metro de la llanta",
-            "value_id": "8175448",
-            "value_name": "16 \"",
+            "value_id": "8175446",
+            "value_name": "15 \"",
             "values": [
                 {
-                    "id": "8175448",
-                    "name": "16 \"",
+                    "id": "8175446",
+                    "name": "15 \"",
                     "struct": {
-                        "number": 16,
+                        "number": 15,
                         "unit": "\""
                     }
                 }
@@ -358,14 +355,14 @@
         {
             "id": "SECTION_WIDTH",
             "name": "Ancho de secci\u00f3n",
-            "value_id": "5913920",
-            "value_name": "205 mm",
+            "value_id": "5913926",
+            "value_name": "225 mm",
             "values": [
                 {
-                    "id": "5913920",
-                    "name": "205 mm",
+                    "id": "5913926",
+                    "name": "225 mm",
                     "struct": {
-                        "number": 205,
+                        "number": 225,
                         "unit": "mm"
                     }
                 }
@@ -376,11 +373,11 @@
             "id": "SELLER_SKU",
             "name": "SKU",
             "value_id": null,
-            "value_name": "444057",
+            "value_name": "749292",
             "values": [
                 {
                     "id": null,
-                    "name": "444057",
+                    "name": "749292",
                     "struct": null
                 }
             ],
@@ -401,14 +398,42 @@
             "value_type": "list"
         },
         {
-            "id": "SPEED_INDEX",
-            "name": "\u00cdndice de velocidad",
-            "value_id": "75518",
-            "value_name": "V",
+            "id": "SIDEWALL",
+            "name": "Lateral",
+            "value_id": "-1",
+            "value_name": null,
             "values": [
                 {
-                    "id": "75518",
-                    "name": "V",
+                    "id": "-1",
+                    "name": null,
+                    "struct": null
+                }
+            ],
+            "value_type": "string"
+        },
+        {
+            "id": "SPEED_INDEX",
+            "name": "\u00cdndice de velocidad",
+            "value_id": "75337",
+            "value_name": "S",
+            "values": [
+                {
+                    "id": "75337",
+                    "name": "S",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "TERRAIN_TYPE",
+            "name": "Tipo de terreno",
+            "value_id": "4369773",
+            "value_name": "HT",
+            "values": [
+                {
+                    "id": "4369773",
+                    "name": "HT",
                     "struct": null
                 }
             ],
@@ -417,12 +442,12 @@
         {
             "id": "TIRES_NUMBER",
             "name": "Cantidad de neum\u00e1ticos",
-            "value_id": "2726555",
-            "value_name": "2",
+            "value_id": "2726554",
+            "value_name": "1",
             "values": [
                 {
-                    "id": "2726555",
-                    "name": "2",
+                    "id": "2726554",
+                    "name": "1",
                     "struct": null
                 }
             ],
@@ -431,14 +456,14 @@
         {
             "id": "TIRE_ASPECT_RATIO",
             "name": "Relaci\u00f3n de aspecto del neum\u00e1tico",
-            "value_id": "22752614",
-            "value_name": "55 %",
+            "value_id": "22752626",
+            "value_name": "70 %",
             "values": [
                 {
-                    "id": "22752614",
-                    "name": "55 %",
+                    "id": "22752626",
+                    "name": "70 %",
                     "struct": {
-                        "number": 55,
+                        "number": 70,
                         "unit": "%"
                     }
                 }
@@ -446,14 +471,42 @@
             "value_type": "number_unit"
         },
         {
-            "id": "UNITS_PER_PACK",
-            "name": "Unidades por pack",
-            "value_id": "2726555",
-            "value_name": "2",
+            "id": "TIRE_CONSTRUCTION_TYPE",
+            "name": "Tipo de construcci\u00f3n",
+            "value_id": "79419",
+            "value_name": "Radial",
             "values": [
                 {
-                    "id": "2726555",
-                    "name": "2",
+                    "id": "79419",
+                    "name": "Radial",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "TREAD_DESIGN",
+            "name": "Dise\u00f1o de la banda de rodadura",
+            "value_id": "4369849",
+            "value_name": "Sim\u00e9trico",
+            "values": [
+                {
+                    "id": "4369849",
+                    "name": "Sim\u00e9trico",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "UNITS_PER_PACK",
+            "name": "Unidades por pack",
+            "value_id": "2726554",
+            "value_name": "1",
+            "values": [
+                {
+                    "id": "2726554",
+                    "name": "1",
                     "struct": null
                 }
             ],
@@ -488,6 +541,20 @@
             "value_type": "list"
         },
         {
+            "id": "VEHICLE_TIRE_SEASON",
+            "name": "Temporada",
+            "value_id": "4369779",
+            "value_name": "Verano",
+            "values": [
+                {
+                    "id": "4369779",
+                    "name": "Verano",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
             "id": "VEHICLE_TYPE",
             "name": "Tipo de veh\u00edculo",
             "value_id": "11377043",
@@ -500,6 +567,62 @@
                 }
             ],
             "value_type": "list"
+        },
+        {
+            "id": "WET_GRIP_EFFICIENCY",
+            "name": "Eficiencia de adherencia en mojado",
+            "value_id": "11300941",
+            "value_name": "A",
+            "values": [
+                {
+                    "id": "11300941",
+                    "name": "A",
+                    "struct": null
+                }
+            ],
+            "value_type": "list"
+        },
+        {
+            "id": "WITH_ICE_GRIP",
+            "name": "Con adherencia en hielo",
+            "value_id": "242084",
+            "value_name": "No",
+            "values": [
+                {
+                    "id": "242084",
+                    "name": "No",
+                    "struct": null
+                }
+            ],
+            "value_type": "boolean"
+        },
+        {
+            "id": "WITH_NOISE_REDUCTION",
+            "name": "Con reducci\u00f3n de ruido",
+            "value_id": "242085",
+            "value_name": "S\u00ed",
+            "values": [
+                {
+                    "id": "242085",
+                    "name": "S\u00ed",
+                    "struct": null
+                }
+            ],
+            "value_type": "boolean"
+        },
+        {
+            "id": "WITH_SNOW_GRIP",
+            "name": "Con adherencia en nieve",
+            "value_id": "242084",
+            "value_name": "No",
+            "values": [
+                {
+                    "id": "242084",
+                    "name": "No",
+                    "struct": null
+                }
+            ],
+            "value_type": "boolean"
         }
     ],
     "warnings": [],
@@ -510,26 +633,27 @@
         "out_of_stock"
     ],
     "tags": [
+        "user_product_unify",
         "catalog_boost",
         "immediate_payment",
         "cart_eligible"
     ],
     "warranty": "Garant\u00eda de f\u00e1brica: 5 a\u00f1os",
-    "catalog_product_id": "MLA37451287",
+    "catalog_product_id": "MLA42456221",
     "domain_id": "MLA-AUTOMOTIVE_TIRES",
     "seller_custom_field": null,
     "parent_item_id": null,
     "differential_pricing": null,
     "deal_ids": [],
     "automatic_relist": false,
-    "date_created": "2025-10-21T05:15:56.541Z",
-    "last_updated": "2025-12-11T20:39:39.524Z",
+    "date_created": "2025-12-12T05:08:38.228Z",
+    "last_updated": "2025-12-12T05:08:39.530Z",
     "health": null,
     "catalog_listing": true,
     "item_relations": [
         {
-            "id": "MLA2005330700",
-            "variation_id": 182820156228,
+            "id": "MLA2055440172",
+            "variation_id": null,
             "stock_relation": 1
         }
     ],

@@ -101,8 +101,8 @@ def sincro(loc, val, cambios):
 
 
 def main(idempresa=1):
-    start_time = time.time()
 
+    start_time = time.time()
     spinner = Spinner()
     spinner.start()
 
@@ -175,9 +175,10 @@ def main(idempresa=1):
         for index, col, val in Items.iterar_sku(rsku):
             #el 99% que sea de catalogo va a significar que esta vinculado
             #lo voy a diferenciar por el 1% que seguro me va a cagar
-            if val.id in descartados or val.sincronizada or val.status == 'under_review' or val.status=='closed':
-                continue
             loc = [(rsku, index), col]
+            catalogo = Items.get_catalogo(loc)
+            if val.id in descartados or (val.sincronizada and catalogo) or val.status == 'under_review' or val.status=='closed':
+                continue
             cant = Items.get_cant(loc)
             fpago = Items.get_fpago(loc)
             precio_map = {
@@ -197,8 +198,6 @@ def main(idempresa=1):
                 continue
 
             cambios[rsku][val.id] = data
-
-            catalogo = Items.get_catalogo(loc)
             data2 = check_cat(data, catalogo, val)
             response = llamadas.modificar(val.id, data2)
             messages.handle_error(response, loc, val, 'sincro')

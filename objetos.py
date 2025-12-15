@@ -102,7 +102,7 @@ class Items:
     ultimo_dir = {}
     #items repetidos no deberian existir, habria que actualizarlos igual
     repetidos={}
-    lost_free_shipping={}
+    lost_free_ship=[]
 
     #llenar un valor en la tabla
     def __init__(self, item_data):
@@ -121,7 +121,6 @@ class Items:
         self.formato_viejo = not catalog and item_data['variations']!=[]
         
         if self.formato_viejo:
-            print("chequeo")
             dir_attributes = item_data['variations'][0]['attributes']
             self.variation_id = item_data['variations'][0]['id']
 
@@ -138,14 +137,14 @@ class Items:
         self.precio = item_data['price']
         self.stock = item_data['available_quantity']
 
-        self.lost_free_shipping = "lost_me2_by_dimensions" in item_data
+        self.lost_free_shipping = "lost_me2_by_dimensions" in item_data['shipping']['tags']
 
         direccion = [(self.sku, cant), (fpago, catalog)]
         #guardar direccion del ultimo item agregado!!
         Items.ultimo_dir = direccion
 
         if self.lost_free_shipping:
-            Items.repetidos.setdefault(self.sku, {}).setdefault(str(direccion), []).append(self)
+            Items.lost_free_ship.append((self.sku, direccion))
 
         #puede que se repitan los items
         if (self.sku, cant) in Items.df.index:
