@@ -32,9 +32,7 @@ def tech_specs(idempresa):
     print(required_attrs)
 
 def new_user():
-    response = llamadas.grant_access_token(6553786730726743, 'AYyaMoSUjTWm5GmpgYcgOxollagCQr9v', 'TG-69a5ae2023452e0001a593a5-118448444', 'https://redirecturi.com')
-    print(response.json())
-
+    
 def info_user(idempresa = 4):
     conn = connections.start_conn(idempresa)
     connections.get_user(conn)
