@@ -30,29 +30,29 @@ class Neumatico:
         for ind in range(len(dir_attributes)):
             atributo = dir_attributes[ind]["id"]
             value = dir_attributes[ind]['value_name']
-            match atributo:
-                case "AUTOMOTIVE_TIRE_ASPECT_RATIO":
-                    self.ratio = value
-                case "BRAND":
-                    self.marca = value
-                case "LINE":
-                    self.linea = value
-                case "LOAD_INDEX":
-                    self.carga = value
-                case "MODEL":
-                    self.modelo = value
-                case "RIM_DIAMETER":
-                    self.diametro = value
-                case "SECTION_WIDTH":
-                    self.ancho = value
-                case "SERVICE_TYPE":
-                    self.servicio = value
-                case "TERRAIN_TYPE":
-                    self.terreno = value
-                case "TIRE_CONSTRUCTION_TYPE":
-                    self.construccion = value
-                case _:
-                    setattr(self, atributo.lower(), None) 
+            if atributo == "AUTOMOTIVE_TIRE_ASPECT_RATIO":
+                self.ratio = value
+            elif atributo == "BRAND":
+                self.marca = value
+            elif atributo == "LINE":
+                self.linea = value
+            elif atributo == "LOAD_INDEX":
+                self.carga = value
+            elif atributo == "MODEL":
+                self.modelo = value
+            elif atributo == "RIM_DIAMETER":
+                self.diametro = value
+            elif atributo == "SECTION_WIDTH":
+                self.ancho = value
+            elif atributo == "SERVICE_TYPE":
+                self.servicio = value
+            elif atributo == "TERRAIN_TYPE":
+                self.terreno = value
+            elif atributo == "TIRE_CONSTRUCTION_TYPE":
+                self.construccion = value
+            else:
+                setattr(self, atributo.lower(), None)
+
 
         catalog = item_data['catalog_listing']
 
@@ -70,15 +70,15 @@ class Neumatico:
         for ind in range(len(dir_attributes)):
             atributo = dir_attributes[ind]["id"]
             value = dir_attributes[ind]['value_name']
-            match atributo:
-                case "SELLER_SKU":
-                    self.sku = value
-                case "GTIN":
+            if atributo == "SELLER_SKU":
+                self.sku = value
+            elif atributo == "GTIN":
                     self.cae = value
 
         self.link = item_data['permalink']
         self.titulo = item_data['title']
         self.status = item_data['status']
+        self.category_id = item_data['category_id']
         #self.tienda_oficial = False if item_data['official_store_id'] == None else True
 
         #hago el dict para q sea mas rapida la busqueda
@@ -103,16 +103,27 @@ class Items:
     #items repetidos no deberian existir, habria que actualizarlos igual
     repetidos={}
     lost_free_ship=[]
+    #control para leandro
+    sin_sku=[]
+
+    curr_error = {}
 
     #llenar un valor en la tabla
     def __init__(self, item_data):
         self.id = item_data['id']
 
+        self.category_id = item_data['category_id']
+
+        cant = None
         dir_attributes = item_data['attributes']
         for ind in range(len(dir_attributes)):
             atributo = dir_attributes[ind]["id"]
             if atributo == "TIRES_NUMBER" or atributo == "UNITS_PER_PACK":
                 cant = dir_attributes[ind]['value_name']
+
+        if cant == None:
+            Items.curr_error = {'causa':'incompleto'}
+            raise ValueError
 
         catalog = item_data['catalog_listing']
 
@@ -129,8 +140,15 @@ class Items:
             value = dir_attributes[ind]['value_name']
             if atributo == "SELLER_SKU":
                 self.sku = value
-        fpago = item_data["listing_type_id"]
+
         self.status = item_data['status']
+        #esto es para leandro
+        if not hasattr(self, 'sku'):
+            Items.curr_error = {'causa':'sku'}
+            raise ValueError
+            #agregar a objetos que le tengo que agregar sku
+        
+        fpago = item_data["listing_type_id"]
         self.sincronizada = item_data['item_relations'] != []
 
         #ahora agrego precio y stock            :)
@@ -154,6 +172,7 @@ class Items:
                 return
 
         Items.df.loc[direccion[0], direccion[1]] = self
+
 
 
 

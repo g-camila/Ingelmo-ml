@@ -4,6 +4,7 @@ import llamadas
 import settings as s
 from datetime import datetime, timezone
 from objetos import Items
+import json
 
 #es una solucion bastante mala leo todas las ventas para restar las que no se despacharon
 #se deberian detectar las ventas hechas con notificaciones en el momento
@@ -17,6 +18,8 @@ def armar_ventas():
 
     #todas las ordenes 
     ordenes = response.json()
+    with open("test.json", "w") as json_file:#
+        json.dump(response.json(), json_file, indent=4)#
     dict_ventas = {}
 
     for orden in ordenes['results']:
@@ -27,23 +30,26 @@ def armar_ventas():
         item_id = orden['order_items'][0]['item']['id']
         cant = orden['order_items'][0]['quantity']
         sku = orden['order_items'][0]['item']['seller_sku']
+        if not sku:
+            continue
 
         #tengo que fijarme si la orden fue despachada desde la id del envio
         #puede no marcar como que recibió el envio el cliente
-        response = llamadas.get_envio(id_envio) if id_envio is not None else None
+        if id_envio:
+            response = llamadas.get_envio(id_envio)
 
-        if response and response.status_code != 200:
-            print(f"Error: {response.status_code} - {response.text}")
-        if response and response.status_code == 404:
-            continue
+            if response and response.status_code != 200:
+                print(f"Error: {response.status_code} - {response.text}")
+            if response and response.status_code == 404:
+                continue
 
-        
-        envio_status = response.json()["status"] if response is not None else None
-        envio_substatus = response.json()["substatus"] if response is not None else None
-        #fijarme si ya se mandó
-        if envio_status in {'shipped', 'delivered'} or (envio_status == "ready_to_ship" and envio_substatus != "ready_to_print"):
-        #if envio_status == "shipped" or envio_status == "delivered" or (envio_status == "ready_to_ship" and envio_substatus != "ready_to_print"):
-            continue
+            
+            envio_status = response.json()["status"] if response is not None else None
+            envio_substatus = response.json()["substatus"] if response is not None else None
+            #fijarme si ya se mandó
+            if envio_status and (envio_status in {'shipped', 'delivered'} or (envio_status == "ready_to_ship" and envio_substatus != "ready_to_print")):
+            #if envio_status == "shipped" or envio_status == "delivered" or (envio_status == "ready_to_ship" and envio_substatus != "ready_to_print"):
+                continue
 
         #consultar la cantidad de gomas dentro de ese item
         for index, col, val in Items.iterar_sku(sku):

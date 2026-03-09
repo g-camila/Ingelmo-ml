@@ -14,20 +14,28 @@ os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 def precio_real(precio, precio2, dir):
     fpago = Items.get_fpago(dir)
-    match fpago:
-        case 0:
+    if fpago == 0:
             return precio * Items.get_cant(dir)
-        case 1:
+    elif fpago == 1:
             return precio2 * Items.get_cant(dir)
         #es un % mas que el precio real, no hace falta andar enviando variables
 
 def stock_real(stock, dir):
     return stock // Items.get_cant(dir)
 
+def check_incompletos(incompletos):
+    df = pd.DataFrame(incompletos, columns=["id", "activo", "causa", "link"])
+    activos = df[df['activo'] == True]
+    inactivos = df[df['activo'] == False]
+    df_reordered = pd.concat([activos, inactivos])
+    df_reordered.to_excel('incompletos.xlsx', index=False)
+
 
 def leer_neums(items_list, batch_size=20):
     i=0
     access_token = s.get_config_value('access_token')
+
+    incompletos=[]
 
     #lo que se deberia estar haciendo aca es guardar la info de la ultima vez que lei los items
     #y solo buscar los atributos de todo de lo que no se leyo todavia para agregarlo
@@ -54,13 +62,30 @@ def leer_neums(items_list, batch_size=20):
 
         for item_data in batch_data:
             if item_data['code'] != 200:
-                messages.send_email(0, "No se pudo leer un item",  item_data.json())
+                messages.send_email(0, "No se pudo leer un item",  item_data)
                 sys.exit()
 
             item_data = item_data['body']
-            with open("test.json", "w") as json_file:
-                json.dump(item_data, json_file, indent=4)
-            Items(item_data)
+
+            #BORRAR ESTO ANTES DEL DEPLOY
+            #with open("test.json", "w") as json_file:#
+            #    json.dump(item_data, json_file, indent=4)#
+            
+            if item_data['status'] == 'closed' or (item_data['category_id'] != 'MLA22195' and item_data['category_id'] != 'MLA6530'):
+                continue
+            try:
+                Items(item_data)
+            except ValueError as err:
+                if item_data['category_id'] == 'MLA22195' or item_data['category_id'] == 'MLA6530':
+                    info = {
+                        'id':item_data['id'],
+                        'activo':True if item_data['status']=='active' else False,
+                        'link':item_data['permalink']
+                    }
+                    info.update(Items.curr_error)
+                    incompletos.append(info)
+                continue
+
             current = Items.ultimo_dir
             sku = Items.get_sku(current)
             cant = Items.get_cant(current)
@@ -73,6 +98,7 @@ def leer_neums(items_list, batch_size=20):
                 n.item_dir = current
 
         messages.printProgressBar(i, length, prefix = 'Leyendo items:', suffix = 'Complete', length = 50)
+    return incompletos
 
     #picklear todo
     #file_path = 'C:\\fuentes\\pickled_lectura.pk1'
@@ -82,7 +108,7 @@ def leer_neums(items_list, batch_size=20):
     #pickle.dump(Neumatico.dict, file_path)
 
 
-def main(idempresa=1):
+def main(idempresa):
     spinner = Spinner()
     spinner.start()
 
@@ -102,7 +128,9 @@ def main(idempresa=1):
     
     spinner.stop()
 
-    leer_neums(items_list)
+    incompletos = leer_neums(items_list)
+    check_incompletos(incompletos)
+
 
 
     
@@ -117,4 +145,4 @@ if __name__ == "__main__":
     except SystemExit as e:
         if e.code != 0:
             print(f"Error: {e}")
-        main(1)
+        main(3)

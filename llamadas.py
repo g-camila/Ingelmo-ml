@@ -73,6 +73,77 @@ def get_item_simple(item_id):
     response = connections.make_request('get', url, headers)
     return response
 
+def cambiar_fam_name(item_id, new_fam_name):
+    access_token = s.get_config_value('access_token')
+    url = f"https://api.mercadolibre.com/items/{item_id}/family_name"
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+    payload = {
+        "family_name": new_fam_name
+    }
+    response = connections.make_request('put', url, headers, payload)
+    return response
+
+def consulta_family(fam_id):
+    access_token = s.get_config_value('access_token')
+    url = f"https://api.mercadolibre.com/sites/MLA/user-products-families/{fam_id}"
+    headers = {
+        "Authorization": f"Bearer {access_token}"
+    }
+    response = connections.make_request('get', url, headers)
+    return response
+
+def consulta_user_product(up_id):
+    access_token = s.get_config_value('access_token')
+    url = f"https://api.mercadolibre.com/user-products/{up_id}"
+    headers = {
+        "Authorization": f"Bearer {access_token}"
+    }
+    response = connections.make_request('get', url, headers)
+    return response
+
+#esto es para cuando tenga q configurar un usuario nuevo
+def grant_access_token(client_id, client_secret, code, redirect_uri):
+    url = "https://api.mercadolibre.com/oauth/token"
+
+    payload = {
+        "grant_type": "authorization_code",
+        "client_id": client_id,
+        "client_secret": client_secret,
+        "code": code,
+        "redirect_uri": redirect_uri
+    }
+
+    headers = {
+        "accept": "application/json",
+        "content-type": "application/x-www-form-urlencoded"
+    }
+    response = connections.make_request('post', url, headers, payload)
+    return response
+
+def tech_specs(category_id):
+    access_token = s.get_config_value('access_token')
+    url = f"https://api.mercadolibre.com/categories/{category_id}/technical_specs/input"
+    headers = {
+        "Authorization": f"Bearer {access_token}"
+    }
+    response = connections.make_request('get', url, headers)
+    return response
+
+def get_user_info():
+    user_id = s.get_config_value('user_id')
+    access_token = s.get_config_value('access_token')
+    url = f"https://api.mercadolibre.com/users/{user_id}"
+    headers = {
+        "Authorization": f"Bearer {access_token}"
+    }
+    response = connections.make_request('get', url, headers)
+    return response
+
+
 
 ##LLAMADAS A MI ENDPOINT
 

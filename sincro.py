@@ -57,12 +57,11 @@ def descarte(row, stockdb):
             desact_grupo(sku, ["2"], desc)
 
        
-    match stockdb:
-        case 1 | 2:
-            filtro = str(stockdb)
-            desact_grupo(sku, [filtro], desc)
-        case 3:
-            desact_grupo(sku, ["1", "2"], desc)
+    if stockdb == 1 or stockdb == 2:
+        filtro = str(stockdb)
+        desact_grupo(sku, [filtro], desc)
+    elif stockdb == 3:
+        desact_grupo(sku, ["1", "2"], desc)
     
     return desc
 
@@ -100,9 +99,8 @@ def sincro(loc, val, cambios):
     return
 
 
-def main(idempresa=1):
+def main(idempresa):
 
-    start_time = time.time()
     spinner = Spinner()
     spinner.start()
 
@@ -124,9 +122,11 @@ def main(idempresa=1):
 
     spinner.stop()
 
-
-    lectura.leer_neums(items_list)
-    corregir()
+    if idempresa == 3:
+        incompletos = lectura.leer_neums(items_list)
+    else:
+        lectura.leer_neums(items_list)
+    #corregir()
 
     dict_ventas = armar_ventas()
     
@@ -148,10 +148,13 @@ def main(idempresa=1):
 
     #ahora me tengo que fijar si hay diferencias entre la db y la info de cada uno de mis neum
     ml_skus = Items.df.index.get_level_values(0).unique().tolist()
-    db_skus = df_db['cai'].unique()
-    ml_not_db = [sku for sku in ml_skus if sku not in db_skus]
+    db_skus = df_db['cai'].unique().tolist()
+    ml_menos_db = list(set(ml_skus) - set(db_skus))
+    db_menos_ml = list(set(db_skus) - set(ml_skus))
+
 
     cambios = {}
+    comp_precios = []
 
     length = len(df_db)
     print("\n")
@@ -167,18 +170,32 @@ def main(idempresa=1):
 
         #funcion que se fija si el item entra en los requisitos para desactivarlo por default
         dbstock = max(0, int(row['existencia']) - dict_ventas.get(rsku, 0))
-        descartados = descarte(row, dbstock)
+        if (idempresa != 3):
+            descartados = descarte(row, dbstock)
         dbprecio1 = int(row['precio'])
         dbprecio2 = int(row['precio2'])
 
         cambios[rsku] = {}
+        comp_flag = False
+
         for index, col, val in Items.iterar_sku(rsku):
             #el 99% que sea de catalogo va a significar que esta vinculado
             #lo voy a diferenciar por el 1% que seguro me va a cagar
             loc = [(rsku, index), col]
             catalogo = Items.get_catalogo(loc)
-            if val.id in descartados or (val.sincronizada and catalogo) or val.status == 'under_review' or val.status=='closed':
+            validez = (val.sincronizada and catalogo) or val.status == 'under_review' or val.status=='closed'
+
+            if validez:
                 continue
+            if idempresa != 3 and val.id in descartados:
+                continue
+            #if val.id in descartados or (val.sincronizada and catalogo) or val.status == 'under_review' or val.status=='closed':
+            #if (val.sincronizada and catalogo) or val.status == 'under_review' or val.status=='closed':
+                #continue
+            
+            #if val.category_id != 'MLA22195':
+            #    print("llanta control") #conclusion: las llantas no tienen sku, no pude controlar
+
             cant = Items.get_cant(loc)
             fpago = Items.get_fpago(loc)
             precio_map = {
@@ -187,6 +204,16 @@ def main(idempresa=1):
             }
             dbprecio = precio_map.get(fpago)*cant
             idbstock = dbstock//cant
+
+            #comparo los precios de mercado libre con la db para ver si tienen sentido
+            #por la forma d iterar va a venir primero cantidad de 1
+            if comp_flag == False and idempresa == 3:
+                comparacion = {'Sku': val.sku, 
+                    'Precio_ml': val.precio//cant, 
+                    'Precio1': dbprecio1, 
+                    'Precio2': dbprecio2}
+                comp_precios.append(comparacion)
+                comp_flag = True
 
             data = { #ah usaba mapeo para todo
                 'price': dbprecio if val.precio != dbprecio else None,
@@ -210,8 +237,24 @@ def main(idempresa=1):
     spinner = Spinner()
     spinner.start()
 
-    for sku in ml_not_db:
-        desact_grupo(sku)
+    for sku in ml_menos_db:
+        if idempresa == 1:
+            desact_grupo(sku)
+
+    ##control para leandro: todo lo que esta en la db que no esta en ml por falta de sku
+    if idempresa == 3:
+        ##incompletos
+        lectura.check_incompletos(incompletos)
+        #db no ml
+        #tengo q ver como esta hecho para formatearlo VOLVER ACA
+        #db_menos_ml a excel
+
+        df_db_menos_ml = pd.DataFrame(db_menos_ml, columns=["sku"])
+        df_db_menos_ml.to_excel('productos_no_ml.xlsx', index=False)
+
+        #pasar comp_precios a df y de ahi a excel
+        df_comp = pd.DataFrame(comp_precios)
+        df_comp.to_excel("comparar_precios.xlsx", index=False)
 
     #lo intento otra vez
     if os.path.exists(errores_file):
@@ -231,9 +274,6 @@ def main(idempresa=1):
     spinner.stop()
 
     logging.info("Sincronización hecha")
-
-    end_time = time.time()
-    print(f"Execution time: {end_time - start_time} seconds")
 
     #ahora el log tendria nomas los errores. al re pedo queda esto
     with open(fmyapplog, 'r', encoding='latin-1') as file:
@@ -256,6 +296,8 @@ def main(idempresa=1):
     if os.path.exists(errores_file):
         mensaje="Hubo un error al intentar modificar algunos items:"
         messages.send_email(0, mensaje, log_content)
+
+    print('\a')
 
 
 
