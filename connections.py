@@ -154,6 +154,7 @@ def get_db():
     for r in records: 
         df_db = pd.concat([df_db, pd.DataFrame({'cai': [r.cai.strip()], 'descripcion': [r.descripcion], 'precio': [r.precio], 'precio2': [r.precio2], 'existencia': [r.existencia], 'observ': [r.observ]})], ignore_index=True)
     
+    df_db.to_excel("df_db.xlsx", index=False)
     return df_db
 
 

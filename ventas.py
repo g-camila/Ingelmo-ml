@@ -3,14 +3,14 @@ import argparse
 import llamadas
 import settings as s
 from datetime import datetime, timezone
-from objetos import Items
+from objetos import Neumatico, Items
 import json
 
 #es una solucion bastante mala leo todas las ventas para restar las que no se despacharon
 #se deberian detectar las ventas hechas con notificaciones en el momento
 #pero hasta que haga eso puedo usar esta solucion vieja
 
-def armar_ventas():
+def armar_ventas(idempresa=''):
     response = llamadas.ordenes_sin_enviar()
     if response.status_code != 200:
         print("Hubo un error, no se pudieron traer las ordenes correctamente")
@@ -32,6 +32,8 @@ def armar_ventas():
         sku = orden['order_items'][0]['item']['seller_sku']
         if not sku:
             continue
+        if idempresa == 3:
+            sku = Neumatico.limpiar_sku(sku)
 
         #tengo que fijarme si la orden fue despachada desde la id del envio
         #puede no marcar como que recibió el envio el cliente

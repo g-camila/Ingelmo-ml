@@ -42,6 +42,7 @@ def leer_neums(items_list, batch_size=20):
     #y borrar lo que no encuentre
     length = len(items_list)
     messages.printProgressBar(0, length, prefix = 'Leyendo items:', suffix = 'Complete', length = 50)
+    idempresa = s.read_section('GENERAL')['idempresa']
 
     while i < len(items_list):
         batch = items_list[i:i+batch_size]
@@ -67,6 +68,10 @@ def leer_neums(items_list, batch_size=20):
 
             item_data = item_data['body']
 
+            id = item_data['id']
+            #if id == 'MLA2210985074' or id == 'MLA2211010954':
+            #    print("control")
+
             #BORRAR ESTO ANTES DEL DEPLOY
             #with open("test.json", "w") as json_file:#
             #    json.dump(item_data, json_file, indent=4)#
@@ -74,7 +79,7 @@ def leer_neums(items_list, batch_size=20):
             if item_data['status'] == 'closed' or (item_data['category_id'] != 'MLA22195' and item_data['category_id'] != 'MLA6530'):
                 continue
             try:
-                Items(item_data)
+                Items(item_data, idempresa)
             except ValueError as err:
                 if item_data['category_id'] == 'MLA22195' or item_data['category_id'] == 'MLA6530':
                     info = {
@@ -94,7 +99,7 @@ def leer_neums(items_list, batch_size=20):
             #garantizar que haya precio de 1 de precio2 
             #cuando se crea el neumatico si es de fpago 1 se asigna el precio de 1
             if cant == 1 and sku not in Neumatico.dict and catalog is False:
-                n = Neumatico(item_data)
+                n = Neumatico(item_data, idempresa)
                 n.item_dir = current
 
         messages.printProgressBar(i, length, prefix = 'Leyendo items:', suffix = 'Complete', length = 50)

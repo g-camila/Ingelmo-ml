@@ -27,7 +27,7 @@ def check_cat(data, cat, val):
     return data
 
 def desactivar(col, val):
-    if val.status != 'active' or val.status == 'under_review' or val.status == 'closed':
+    if val.status == 'under_review' or val.status == 'closed':
         return None
     else:
         data1 = {"available_quantity" : 0}
@@ -128,7 +128,7 @@ def main(idempresa):
         lectura.leer_neums(items_list)
     #corregir()
 
-    dict_ventas = armar_ventas()
+    dict_ventas = armar_ventas(idempresa)
     
     #los errores anteriores toman prioridad para actualizar
     if os.path.exists(errores_file):
@@ -164,7 +164,7 @@ def main(idempresa):
     for i, (index, row) in enumerate(df_db.iterrows(), start=0):
         #fijarse si hay una diferencia entre el precio o stock entre la base d datos y mercado libre
         rsku = row['cai']
-        if rsku not in Neumatico.dict:
+        if rsku not in ml_skus:
             messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
             continue  #no existe en ml
 
@@ -211,7 +211,8 @@ def main(idempresa):
                 comparacion = {'Sku': val.sku, 
                     'Precio_ml': val.precio//cant, 
                     'Precio1': dbprecio1, 
-                    'Precio2': dbprecio2}
+                    'Precio2': dbprecio2,
+                    'status' : val.status}
                 comp_precios.append(comparacion)
                 comp_flag = True
 

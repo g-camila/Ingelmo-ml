@@ -1,4 +1,6 @@
 import pandas as pd
+import settings as s
+import regex as re
 
 #mepa que no se deberia hacer desde 0 todo esto
 #se deberia guardar la ultima version del df y el dict y actualizar nomas
@@ -11,7 +13,7 @@ import pandas as pd
 class Neumatico:
     dict = {}
 
-    def __init__(self, item_data):
+    def __init__(self, item_data, idempresa=''):
         self.ratio = None
         self.marca = None
         self.linea = None
@@ -71,6 +73,10 @@ class Neumatico:
             atributo = dir_attributes[ind]["id"]
             value = dir_attributes[ind]['value_name']
             if atributo == "SELLER_SKU":
+                #limpiar el sku con regex si es leandro
+                if idempresa == '3':
+                    value = Neumatico.limpiar_sku(value)
+
                 self.sku = value
             elif atributo == "GTIN":
                     self.cae = value
@@ -81,8 +87,16 @@ class Neumatico:
         self.category_id = item_data['category_id']
         #self.tienda_oficial = False if item_data['official_store_id'] == None else True
 
+        self.stock = item_data['available_quantity']
+        self.precio = item_data['price']
         #hago el dict para q sea mas rapida la busqueda
         Neumatico.dict[self.sku] = self
+
+    @staticmethod
+    def limpiar_sku(value):
+        value = re.sub(r"^(?:x[24]|[24]x)_", "", value, flags=re.IGNORECASE)
+        value = re.sub(r"_premium$", "", value)
+        return value
 
 
 #la clase item es de cada publicacion de mercado libre,
@@ -109,7 +123,7 @@ class Items:
     curr_error = {}
 
     #llenar un valor en la tabla
-    def __init__(self, item_data):
+    def __init__(self, item_data, idempresa=''):
         self.id = item_data['id']
 
         self.category_id = item_data['category_id']
@@ -139,6 +153,8 @@ class Items:
             atributo = dir_attributes[ind]["id"]
             value = dir_attributes[ind]['value_name']
             if atributo == "SELLER_SKU":
+                if idempresa == '3':
+                    value = Neumatico.limpiar_sku(value)
                 self.sku = value
 
         self.status = item_data['status']
@@ -151,9 +167,10 @@ class Items:
         fpago = item_data["listing_type_id"]
         self.sincronizada = item_data['item_relations'] != []
 
-        #ahora agrego precio y stock            :)
         self.precio = item_data['price']
         self.stock = item_data['available_quantity']
+        self.titulo = item_data['title']
+        self.link = item_data['permalink']
 
         self.lost_free_shipping = "lost_me2_by_dimensions" in item_data['shipping']['tags']
 
