@@ -15,6 +15,7 @@ from ventas import armar_ventas
 from spin import Spinner
 
 os.environ['PYTHONIOENCODING'] = 'utf-8'
+CAMBIOS = {}
 
 def check_cat(data, cat, val):
     #preparar el json data!!
@@ -32,6 +33,11 @@ def desactivar(col, val):
     else:
         data1 = {"available_quantity" : 0}
         data = check_cat(data1, col[1], val)
+        if val.stock != 0:
+            if val.sku not in CAMBIOS:
+                CAMBIOS[val.sku] = {}
+            CAMBIOS[val.sku][val.id] = data
+            #CAMBIOS[val.sku][val.id]['stock'] = 0
         response = llamadas.modificar(val.id, data)
         return response
     
@@ -77,18 +83,18 @@ def corregir():
 
 
 
-def sincro(loc, val, cambios):
-    if val.status == 'under_review' or val.sttaus == 'closed':
+def sincro(loc, val):
+    if val.status == 'under_review' or val.status == 'closed':
         return
     
     data = {}
-    if 'precio' in cambios:
-        precio = cambios['precio']
-        precio2 = cambios['precio2']
+    if 'precio' in CAMBIOS:
+        precio = CAMBIOS['precio']
+        precio2 = CAMBIOS['precio2']
         new_precio = lectura.precio_real(precio, precio2, loc)
         data['price'] = new_precio
-    if 'stock' in cambios:
-        stock = cambios['stock']
+    if 'stock' in CAMBIOS:
+        stock = CAMBIOS['stock']
         new_stock = lectura.stock_real(stock, loc)
         data['available_quantity'] = new_stock
 
@@ -152,8 +158,6 @@ def main(idempresa):
     ml_menos_db = list(set(ml_skus) - set(db_skus))
     db_menos_ml = list(set(db_skus) - set(ml_skus))
 
-
-    cambios = {}
     comp_precios = []
 
     length = len(df_db)
@@ -168,6 +172,8 @@ def main(idempresa):
             messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
             continue  #no existe en ml
 
+        CAMBIOS[rsku] = {}
+
         #funcion que se fija si el item entra en los requisitos para desactivarlo por default
         dbstock = max(0, int(row['existencia']) - dict_ventas.get(rsku, 0))
         if (idempresa != 3):
@@ -175,7 +181,6 @@ def main(idempresa):
         dbprecio1 = int(row['precio'])
         dbprecio2 = int(row['precio2'])
 
-        cambios[rsku] = {}
         comp_flag = False
 
         for index, col, val in Items.iterar_sku(rsku):
@@ -225,13 +230,11 @@ def main(idempresa):
             if not data:
                 continue
 
-            cambios[rsku][val.id] = data
+            CAMBIOS[rsku][val.id] = data
             data2 = check_cat(data, catalogo, val)
             response = llamadas.modificar(val.id, data2)
             messages.handle_error(response, loc, val, 'sincro')
 
-        if cambios[rsku] == {}:
-            del cambios[rsku]
         messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
         #not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
     
@@ -241,6 +244,8 @@ def main(idempresa):
     for sku in ml_menos_db:
         if idempresa == 1:
             desact_grupo(sku)
+
+    CAMBIOS = {sku: val for sku, val in CAMBIOS.items() if val != {}}
 
     ##control para leandro: todo lo que esta en la db que no esta en ml por falta de sku
     if idempresa == 3:
@@ -268,7 +273,7 @@ def main(idempresa):
             val = Items.loc[row, col]
             tipo = error['tipo']
             if tipo == 'sincro':
-                sincro(dir, val, cambios[sku])
+                sincro(dir, val, CAMBIOS[sku])
             elif tipo == 'desact':
                 desactivar(col, val)
 
@@ -280,14 +285,14 @@ def main(idempresa):
     with open(fmyapplog, 'r', encoding='latin-1') as file:
         log_content = file.read()
 
-    cambios_json = json.dumps(cambios)
+    CAMBIOS_json = json.dumps(CAMBIOS)
 
-    with open('cambios_output.json', 'w', encoding='utf-8') as outfile:
-        json.dump(cambios, outfile, ensure_ascii=False, indent=2)
+    with open('CAMBIOS_output.json', 'w', encoding='utf-8') as outfile:
+        json.dump(CAMBIOS, outfile, ensure_ascii=False, indent=2)
 
 
     cadena="insert into historial (idempresa,myapplog,status) values (?, ?, ?)"
-    values=(idempresa,cambios_json,'ok')
+    values=(idempresa,CAMBIOS_json,'ok')
 
     cursor = conn.cursor()
     cursor.execute(cadena,values)
