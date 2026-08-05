@@ -132,7 +132,7 @@ class Items:
         dir_attributes = item_data['attributes']
         for ind in range(len(dir_attributes)):
             atributo = dir_attributes[ind]["id"]
-            if atributo == "TIRES_NUMBER" or atributo == "UNITS_PER_PACK":
+            if atributo == "TIRES_NUMBER" or atributo == "UNITS_PER_PACK" or atributo == "RIMS_NUMBER":
                 cant = dir_attributes[ind]['value_name']
 
         if cant == None:

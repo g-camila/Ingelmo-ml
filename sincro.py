@@ -17,6 +17,19 @@ from spin import Spinner
 os.environ['PYTHONIOENCODING'] = 'utf-8'
 CAMBIOS = {}
 
+def log_change(data, val):
+    logging.info(f"{val.titulo}")
+    logging.info(f"Sku: {val.sku}")
+    if 'price' in data:
+        logging.info(f"Precio viejo: {val.precio}")
+        logging.info(f"Precio nuevo:{data['price']}")
+    if 'available_quantity' in data:
+        logging.info(f"Stock viejo: {val.stock}")
+        logging.info(f"Stock nuevo:{data['available_quantity']}")
+    logging.info(f"{val.link}")
+    logging.info("\n")
+
+
 def check_cat(data, cat, val):
     #preparar el json data!!
     if val.formato_viejo: #no catalogo
@@ -27,8 +40,9 @@ def check_cat(data, cat, val):
         data = xdata
     return data
 
+
 def desactivar(col, val):
-    if val.status == 'under_review' or val.status == 'closed':
+    if val.status == 'under_review' or val.status == 'closed' or val.stock==0:
         return None
     else:
         data1 = {"available_quantity" : 0}
@@ -38,8 +52,15 @@ def desactivar(col, val):
                 CAMBIOS[val.sku] = {}
             CAMBIOS[val.sku][val.id] = data
             #CAMBIOS[val.sku][val.id]['stock'] = 0
-        response = llamadas.modificar(val.id, data)
-        return response
+
+        logging.info(f"{val.titulo}")
+        logging.info(f"Sku: {val.sku}")
+        logging.info(f"Stock viejo: {val.stock}")
+        logging.info(f"Stock nuevo:{0}")
+        logging.info(f"{val.link} \n")
+        #response = llamadas.modificar(val.id, data)
+        #return response
+        return None
     
 def desact_grupo(sku, filtro=[""], desc=None):
     for index, col, val in Items.iterar_sku(sku, filtro):
@@ -106,12 +127,13 @@ def sincro(loc, val):
 
 
 def main(idempresa):
-
+    global CAMBIOS 
+    CAMBIOS = {}
+    
     spinner = Spinner()
     spinner.start()
 
     fmyapplog = f'{idempresa}_myapp.log'
-    errores_file = f'{idempresa}_errores.json'
     
     s.update_config('GENERAL', 'idempresa', idempresa)
 
@@ -132,25 +154,11 @@ def main(idempresa):
         incompletos = lectura.leer_neums(items_list)
     else:
         lectura.leer_neums(items_list)
-    #corregir()
+
+    if idempresa == 1:
+        corregir()
 
     dict_ventas = armar_ventas(idempresa)
-    
-    #los errores anteriores toman prioridad para actualizar
-    if os.path.exists(errores_file):
-        with open(errores_file, 'r') as file:
-            errores = json.load(file)
-            for error in errores:
-                row = tuple(error['dir'][0])
-                col = tuple(error['dir'][1])
-                dir = [row, col]
-                sku = Items.get_sku(dir)
-                errores_rows = df_db[df_db['cai'] == sku]
-                normales_rows = df_db[df_db['cai'] != sku]
-
-        os.remove(errores_file)
-        df_db = pd.concat([errores_rows, normales_rows], ignore_index=True)
-
 
     #ahora me tengo que fijar si hay diferencias entre la db y la info de cada uno de mis neum
     ml_skus = Items.df.index.get_level_values(0).unique().tolist()
@@ -194,12 +202,12 @@ def main(idempresa):
                 continue
             if idempresa != 3 and val.id in descartados:
                 continue
+            if idempresa == 3 and catalogo:
+                desactivar(col, val)
+                continue
             #if val.id in descartados or (val.sincronizada and catalogo) or val.status == 'under_review' or val.status=='closed':
             #if (val.sincronizada and catalogo) or val.status == 'under_review' or val.status=='closed':
                 #continue
-            
-            #if val.category_id != 'MLA22195':
-            #    print("llanta control") #conclusion: las llantas no tienen sku, no pude controlar
 
             cant = Items.get_cant(loc)
             fpago = Items.get_fpago(loc)
@@ -230,10 +238,13 @@ def main(idempresa):
             if not data:
                 continue
 
+            #tengo q hacer una asquerosidad aca
+            log_change(data, val)
+
             CAMBIOS[rsku][val.id] = data
             data2 = check_cat(data, catalogo, val)
-            response = llamadas.modificar(val.id, data2)
-            messages.handle_error(response, loc, val, 'sincro')
+            #response = llamadas.modificar(val.id, data2)
+            #messages.handle_error(response, loc, val, 'sincro')
 
         messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
         #not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
@@ -245,7 +256,8 @@ def main(idempresa):
         if idempresa == 1:
             desact_grupo(sku)
 
-    CAMBIOS = {sku: val for sku, val in CAMBIOS.items() if val != {}}
+    CAMBIOS = {sku: val for sku, val in CAMBIOS.items() if val}
+
 
     ##control para leandro: todo lo que esta en la db que no esta en ml por falta de sku
     if idempresa == 3:
@@ -262,28 +274,9 @@ def main(idempresa):
         df_comp = pd.DataFrame(comp_precios)
         df_comp.to_excel("comparar_precios.xlsx", index=False)
 
-    #lo intento otra vez
-    if os.path.exists(errores_file):
-        with open(errores_file, 'r') as file:
-            errores = json.load(file)
-        os.remove(errores_file)
-        for error in errores:
-            row = tuple(error['dir'][0])
-            col = tuple(error['dir'][1])
-            val = Items.loc[row, col]
-            tipo = error['tipo']
-            if tipo == 'sincro':
-                sincro(dir, val, CAMBIOS[sku])
-            elif tipo == 'desact':
-                desactivar(col, val)
-
     spinner.stop()
 
     logging.info("Sincronización hecha")
-
-    #ahora el log tendria nomas los errores. al re pedo queda esto
-    with open(fmyapplog, 'r', encoding='latin-1') as file:
-        log_content = file.read()
 
     CAMBIOS_json = json.dumps(CAMBIOS)
 
@@ -298,11 +291,6 @@ def main(idempresa):
     cursor.execute(cadena,values)
     cursor.commit()
 
-    #si siguen habiendo errores es preocupante
-    if os.path.exists(errores_file):
-        mensaje="Hubo un error al intentar modificar algunos items:"
-        messages.send_email(0, mensaje, log_content)
-
     print('\a')
 
 
@@ -316,4 +304,4 @@ if __name__ == "__main__":
     except SystemExit as e:
         if e.code != 0:
             print(f"Error: {e}")
-        main(1)
+        main(3)

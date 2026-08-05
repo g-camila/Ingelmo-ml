@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 import pandas as pd
 from datetime import datetime
 import requests
-import random
 import math
 import time
 import logging

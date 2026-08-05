@@ -1,2 +1,6 @@
 .env
 config.ini
+1_myapp.log
+2_myapp.log
+3_myapp.log
+4_myapp.log

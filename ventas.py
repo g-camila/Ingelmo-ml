@@ -26,14 +26,16 @@ def armar_ventas(idempresa=''):
         concretado = orden['fulfilled']
         if concretado != None:
             continue
-        id_envio = orden['shipping']['id']
-        item_id = orden['order_items'][0]['item']['id']
-        cant = orden['order_items'][0]['quantity']
+
         sku = orden['order_items'][0]['item']['seller_sku']
         if not sku:
             continue
         if idempresa == 3:
             sku = Neumatico.limpiar_sku(sku)
+
+        id_envio = orden['shipping']['id']
+        item_id = orden['order_items'][0]['item']['id']
+        cant = orden['order_items'][0]['quantity']
 
         #tengo que fijarme si la orden fue despachada desde la id del envio
         #puede no marcar como que recibió el envio el cliente
@@ -53,11 +55,15 @@ def armar_ventas(idempresa=''):
             #if envio_status == "shipped" or envio_status == "delivered" or (envio_status == "ready_to_ship" and envio_substatus != "ready_to_print"):
                 continue
 
+        unidades = None
         #consultar la cantidad de gomas dentro de ese item
         for index, col, val in Items.iterar_sku(sku):
             if val.id == item_id:
                 unidades = int(index)
                 continue
+
+        if not unidades:
+            continue
 
         venta_total = cant * unidades
 

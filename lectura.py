@@ -68,10 +68,7 @@ def leer_neums(items_list, batch_size=20):
 
             item_data = item_data['body']
 
-            id = item_data['id']
-            #if id == 'MLA2210985074' or id == 'MLA2211010954':
-            #    print("control")
-
+            #id = item_data['id']
             #BORRAR ESTO ANTES DEL DEPLOY
             #with open("test.json", "w") as json_file:#
             #    json.dump(item_data, json_file, indent=4)#
