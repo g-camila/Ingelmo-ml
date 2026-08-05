@@ -58,9 +58,8 @@ def desactivar(col, val):
         logging.info(f"Stock viejo: {val.stock}")
         logging.info(f"Stock nuevo:{0}")
         logging.info(f"{val.link} \n")
-        #response = llamadas.modificar(val.id, data)
-        #return response
-        return None
+        response = llamadas.modificar(val.id, data)
+        return response
     
 def desact_grupo(sku, filtro=[""], desc=None):
     for index, col, val in Items.iterar_sku(sku, filtro):
@@ -243,8 +242,8 @@ def main(idempresa):
 
             CAMBIOS[rsku][val.id] = data
             data2 = check_cat(data, catalogo, val)
-            #response = llamadas.modificar(val.id, data2)
-            #messages.handle_error(response, loc, val, 'sincro')
+            response = llamadas.modificar(val.id, data2)
+            messages.handle_error(response, loc, val, 'sincro')
 
         messages.printProgressBar(i + 1, length, prefix = 'Sincronizando items:', suffix = 'Complete', length = 50)
         #not_read.remove(rsku) #los que queden son cosas de la db que no estan en ml
